@@ -118,6 +118,10 @@ fun main(args: Array<String>) {
             uno,
             if (dos == null) 0 else uno
         )
-}
 
+    }
 
+    //Instacias
+    val sumaUno = Suma(1,1)
+    val sumaDos = Suma(null, 1)
+    val sumaTres = Suma(1, null)
