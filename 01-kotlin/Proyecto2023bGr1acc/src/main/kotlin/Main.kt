@@ -105,36 +105,43 @@ fun main(args: Array<String>) {
 
     //**********CLASES********
 
-    //CONSRTRUCTOR PRIMARIO
-    abstract class Numeros(   protected  val numeroUno: Int, protected  val numeroDos: Int, ){
-        init {//Bloque  codigo del constructor primario
+    //CONSRTRUCTOR PRIMARIO, viene justo despues del nombre de la clase
+    //Las porpiedaes son publicas
+    abstract class Numeros(protected  val numeroUno: Int, protected  val numeroDos: Int){
+        init {//****Bloque  codigo del constructor primario
             this.numeroUno; this.numeroDos //this es opcionl
             numeroUno; numeroDos; //sin el this es lo mismo
             println("Inicializando")
         }
-
     }
 
-    class Suma( // Constructor Primario Suma
-        uno: Int, // Parametro
-        dos: Int // Parametro
-    ): Numeros(uno, dos) { // <- Constructor del Padre
+
+    // ******Constructor Primario Suma
+    class Suma(
+        uno: Int,  //Parametro
+        dos: Int //Parametro
+    ): //Despues de los parentesisi hay dos puntos, con eso hacemos que se desvie a nuestra clase lalamda Numeros
+        Numeros(uno, dos) { // <- Constructor del Padre
         init { // Bloque constructor primario
             this.numeroUno; numeroUno;
             this.numeroDos; numeroDos;
         }
 
+
+        //Constructores
         constructor(//  Segundo constructor
             uno: Int?, // parametros
             dos: Int // parametros
-        ) : this(  // llamada constructor primario
-            if (uno == null) 0 else uno,
-            dos
+
+        ) : this(  // llamada constructor Primario
+            if (uno == null) 0 else uno, dos
         ) { // si necesitamos bloque de codigo lo usamos
             numeroUno;
         }
 
-        constructor(//  tercer constructor
+        //En el tercer contructor no tiene bloque d ecoigo
+        //En este caso se puede omitir
+        constructor(//  Tercer constructor
             uno: Int, // parametros
             dos: Int? // parametros
         ) : this(  // llamada constructor primario
@@ -144,7 +151,7 @@ fun main(args: Array<String>) {
 
     }
 
-    //Instacias
+    //*******Instancias
     val sumaUno = Suma(1,1)
     val sumaDos = Suma(null, 1)
     val sumaTres = Suma(1, null)
