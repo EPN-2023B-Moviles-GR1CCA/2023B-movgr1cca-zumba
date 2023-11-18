@@ -10,7 +10,18 @@ fun main(args: Array<String>) {
     val inmutable: String = "RAQUEL";
 
     //MUTABLE (PUEDE SER REASIGNADAS)
-    val mutable: String = "RAQUEL";
+    //Reasignar es que se puede igualar en este caso
+    // con la varaiable mutable  se esta asigando otro valor
+    var mutable: String = "RAQUEL";
+    mutable= "ESTHER"
+
+
+    //Duck Typing
+    // En la mayoria de los casos necesitamos poner  el tipo de vraible
+    //Debido a que duck typing ya nos ayuda con eso
+    var ejemploVarible = "Raquel Zumba"
+    val  edadEjemplo: Int = 12
+    ejemploVarible.trim()
 
 
 
@@ -25,7 +36,10 @@ fun main(args: Array<String>) {
 
 
     //SWITCH
+    //Declracion de la variable
     val estadoCivilWhen = "C"
+
+
     when (estadoCivilWhen){
         ("C")-> {
             println("Casado")
@@ -41,7 +55,9 @@ fun main(args: Array<String>) {
     //if else en una sola linea
     val coqueteo = if (estadoCivilWhen == "S") "Si" else "No"
 
-    //FUNCIONES
+
+
+    //*******FUNCIONES
    //si no ponemos nada ponemos UNIT
     fun calcularSueldo(
         sueldo: Double, //Requerido
@@ -125,3 +141,4 @@ fun main(args: Array<String>) {
     val sumaUno = Suma(1,1)
     val sumaDos = Suma(null, 1)
     val sumaTres = Suma(1, null)
+}
