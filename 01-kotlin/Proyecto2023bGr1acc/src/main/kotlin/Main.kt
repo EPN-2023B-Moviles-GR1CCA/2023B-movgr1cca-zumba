@@ -1,4 +1,5 @@
 import java.util.*
+import kotlin.collections.ArrayList
 
 fun main(args: Array<String>) {
     println("Hello World!")
@@ -6,6 +7,7 @@ fun main(args: Array<String>) {
 
     //*********IMUTABLE NO ES REASIGNADA
     val inmutable: String = "RAQUEL";
+
 
     //********MUTABLE (PUEDE SER REASIGNADAS)
     //Reasignar es que se puede igualar en este caso
@@ -120,7 +122,7 @@ fun main(args: Array<String>) {
     class Suma(
         uno: Int,  //Parametro
         dos: Int //Parametro
-    ): //Despues de los parentesisi hay dos puntos, con eso hacemos que se desvie a nuestra clase lalamda Numeros
+    ): //Despues de los parentesis hay dos puntos, con eso hacemos que se desvie a nuestra clase lalamda Numeros
         Numeros(uno, dos) { // <- Constructor del Padre
         init { // Bloque constructor primario
             this.numeroUno; numeroUno;
@@ -149,10 +151,130 @@ fun main(args: Array<String>) {
             if (dos == null) 0 else uno
         )
 
+        // cuarto constructor
+        constructor(uno: Int?, dos: Int?) : this(
+            if (uno == null) 0 else uno,
+            if (dos == null) 0 else uno
+        )
+
+        //FUNCION SUMAR
+        public fun sumar(): Int {//public po defecto o usar private
+            val total = numeroUno + numeroDos
+            return total
+        }
+
+        //atributos y metodos compartidos
+   /* companion object { // Atributos y Metodos "Compartidos"
+        // entre las instancias
+        val pi = 3.14
+        fun elevarAlCuadrado(num: Int): Int {
+            return num * num
+        }
+        val historialSumas = arrayListOf<Int>()
+        fun agregarHistorial(valorNuevaSuma:Int){
+            historialSumas.add(valorNuevaSuma)
+        }
+    }*/
     }
+
+
 
     //*******Instancias
     val sumaUno = Suma(1,1)
     val sumaDos = Suma(null, 1)
     val sumaTres = Suma(1, null)
+    val sumaCuatro = Suma(null, null)
+     sumaUno.sumar()
+    sumaDos.sumar()
+    sumaTres.sumar()
+    sumaCuatro.sumar()
+
+    /*println(Suma.pi)
+    println(Suma.elevarAlCuadrado(2))
+    println(Suma.historialSumas)*/
+
+    //*******ARREGLOS
+    //AREGLO ESTATICO
+    val arregloEstatico: Array<Int> = arrayOf <Int> (1,2,3)
+    println(arregloEstatico)
+    val arregloDinamico: ArrayList<Int>  = arrayListOf <Int> (1,2,3,4,5,6,7,8,9,10)
+    println(arregloDinamico)
+    // Agrega el valor 11 al final del ArrayList.
+    arregloDinamico.add(11)
+    // Agrega el valor 12 al final del ArrayList.
+    arregloDinamico.add(12)
+    // Imprime el contenido actualizado del ArrayList después de agregar los valores 11 y 12.
+    println(arregloDinamico)
+
+//****FOREACH****
+
+    //Foreach no devuelve nada
+    val respuestaForEach : Unit = arregloDinamico.forEach{valorActual : Int ->
+        println("valor actual: ${valorActual}")
+    }
+
+    //it en ingles signofoca elemnatdo iteradfo
+    // si hay mas de un parametro no podemos utlizar it
+    arregloDinamico.forEach{ println(it) }
+
+    //Indice actaul con el valor actual
+    arregloEstatico.forEachIndexed { indice: Int, valorActual: Int ->
+        println("Valor ${valorActual} Indice ${indice}")
+    }
+    println(respuestaForEach)
+
+// MAP cambia el arreglo
+//@map hace refrencia a lo que esta haciendo
+    //Nos devuelve un nuevo aarreglo con los valores  modificados
+    val respuestaMap : List<Double>  = arregloDinamico.map { valorActual: Int->
+        //Valor actual  a tranformar a double
+        return@map valorActual.toDouble() + 100.00
+    }
+    println(respuestaMap)
+    val respuestaMapDos = arregloDinamico.map { it +15 }
+
+
+    //******El operador Flitre nos ayuda a filtrar el arreglo
+    val respuestaFilter: List<Int> = arregloDinamico.filter { valorActual : Int ->
+        //Expresion Condicion
+        val mayoresACinco: Boolean = valorActual > 5
+        return@filter mayoresACinco
+    }
+    val respuestaFilterDos = arregloDinamico.filter{ it <= 5}
+    println(respuestaFilter)
+    println(respuestaFilterDos)
+
+
+
+
+    //******OR AND devuelve valores valores Booleanos
+    //Any=  Comprueba si al menos un elemento cumple con la condicion
+    //All= Verifica que todos los elementos cumple con la condicion
+    val respuestaAny: Boolean = arregloDinamico.any{valorActual:Int->
+        return@any (valorActual > 5)
+    }
+    println(respuestaAny)///true
+
+    val respuestaAll : Boolean = arregloDinamico.all{
+            valorActual : Int ->
+        return@all(valorActual >5)
+    }
+    println(respuestaAll)//FALSE
+
+//Reduce: Acomula Valores
+    val respuestReduce: Int = arregloDinamico.reduce{//acumulado= 0 siempre empieza en 0
+            acumulado: Int, valorActual: Int ->
+        return@reduce(acumulado + valorActual)//
+
+    }
+    println(respuestReduce)
+
+
+
+
+
+
 }
+
+
+
