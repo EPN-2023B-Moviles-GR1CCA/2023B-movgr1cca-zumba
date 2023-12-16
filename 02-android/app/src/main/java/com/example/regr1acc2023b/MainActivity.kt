@@ -1,6 +1,7 @@
 package com.example.regr1acc2023b
 
 import android.os.Bundle
+import android.widget.Button
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.compose.foundation.layout.fillMaxSize
@@ -17,8 +18,16 @@ import  androidx.appcompat.app.AppCompatActivity
 class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-
+        val botonCicloVida = findViewById<Button>(R.id.btn_ciclo_vida)
+        botonCicloVida.setOnClickListener{
+            irActividad(ACicloVida:: class.java)
+        }
     }
+
+fun irActividad( clase: Class<*>){
+    val intent = Intent(this, clase)
+    startActivity(intent)
+}
 }
 
 
