@@ -1,5 +1,6 @@
 package com.example.regr1acc2023b
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import androidx.activity.ComponentActivity
@@ -21,6 +22,11 @@ class MainActivity : AppCompatActivity() {
         val botonCicloVida = findViewById<Button>(R.id.btn_ciclo_vida)
         botonCicloVida.setOnClickListener{
             irActividad(ACicloVida:: class.java)
+        }
+
+        val botonListView = findViewById<Button>(R.id.btn_ir_list_view)
+        botonCicloVida.setOnClickListener{
+            irActividad(BListView:: class.java)
         }
     }
 

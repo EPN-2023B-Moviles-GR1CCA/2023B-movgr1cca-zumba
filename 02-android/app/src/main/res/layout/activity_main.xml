@@ -25,9 +25,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="C.VIDA"
-        app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintStart_toStartOf="@+id/textView"
-        tools:layout_editor_absoluteY="542dp" />
+        app:layout_constraintEnd_toEndOf="@+id/btn_ir_list_view"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="@+id/btn_ir_list_view"
+        tools:layout_editor_absoluteY="480dp" />
+
+    <Button
+        android:id="@+id/btn_ir_list_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="L.View"
+        tools:layout_editor_absoluteX="170dp"
+        tools:layout_editor_absoluteY="607dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
