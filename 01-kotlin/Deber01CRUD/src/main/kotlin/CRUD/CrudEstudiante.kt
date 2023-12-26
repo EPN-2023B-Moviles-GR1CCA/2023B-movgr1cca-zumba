@@ -49,7 +49,7 @@ class CrudEstudiante() {
             }
         }
 
-        private fun cargarEstudiantes(): MutableList<Estudiante> {
+        fun cargarEstudiantes(): MutableList<Estudiante> {
             val estudiantes: MutableList<Estudiante> = mutableListOf()
             if (archivo.exists()) {
                 archivo.bufferedReader(Charsets.UTF_8).use { reader ->

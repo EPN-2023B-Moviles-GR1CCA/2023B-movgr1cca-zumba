@@ -9,6 +9,7 @@ class Materia(
     var  creditos: Int,
     var costo: Double,
     var esObligatoria: Boolean
+
 ): Serializable {
 
 
