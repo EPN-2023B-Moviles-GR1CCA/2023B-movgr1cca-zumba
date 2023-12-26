@@ -5,14 +5,14 @@ import CRUD.CrudMateria
 import Entidades.Estudiante
 import Entidades.Materia
 
-fun main(args: Array<String>) {
+fun main() {
     val scanner = Scanner(System.`in`)
     val formatoFecha = SimpleDateFormat("dd/MM/yyyy")
     val materiaCRUD = CrudMateria()
     val estudianteCRUD = CrudEstudiante()
 
     loop@ while (true) {
-        println("==== MENÚ ====")
+        println("****** ESCOJA LA OPCION QUE DESEA REALIZAR*********")
         println("1. CRUD Estudiante")
         println("2. CRUD Materia")
         println("3. Salir")
@@ -20,47 +20,54 @@ fun main(args: Array<String>) {
 
         when (scanner.nextInt()) {
             1 -> {
-                val estudianteCRUD = CrudEstudiante()
-
                 while (true) {
                     println("==== CRUD Estudiante ====")
                     println("1. Crear Estudiante")
                     println("2. Listar Estudiantes")
                     println("3. Actualizar Estudiante")
-                    println("4. Eliminar Estudiante")
+                    println("4. Eliminar Estudiante por código")
                     println("5. Volver al menú principal")
                     println("Ingrese la opción deseada:")
 
                     when (scanner.nextInt()) {
                         1 -> {
                             scanner.nextLine() // Consumir el salto de línea pendiente
+                            println("Ingrese el código del estudiante:")
+                            val codigoEstudiante = scanner.nextInt()
+                            scanner.nextLine() // Consumir el salto de línea pendiente
+
                             println("Ingrese el nombre del estudiante:")
                             val nombre = scanner.nextLine()
+
                             println("Ingrese la fecha de nacimiento (dd/MM/yyyy):")
                             val fechaNacimientoStr = scanner.nextLine()
                             val fechaNacimiento = formatoFecha.parse(fechaNacimientoStr)
+
                             println("Ingrese el promedio del estudiante:")
                             val promedio = scanner.nextDouble()
                             scanner.nextLine() // Consumir el salto de línea pendiente
                             println("Estudiante activo? (true/false):")
                             val activo = scanner.nextBoolean()
 
-                            val estudiante = Estudiante(0, nombre, fechaNacimiento, promedio, activo)
+                            val estudiante = Estudiante(codigoEstudiante, nombre, fechaNacimiento, promedio, activo)
                             estudianteCRUD.crearEstudiante(estudiante)
                         }
+
                         2 -> {
                             println("=== Estudiantes ===")
                             estudianteCRUD.listarEstudiantes()
                             println("===================")
+
                         }
                         3 -> {
-                            println("Ingrese el índice del estudiante a actualizar:")
-                            val index = scanner.nextInt()
+                            println("Ingrese el código del estudiante a actualizar:")
+                            val codigo = scanner.nextInt()
                             scanner.nextLine() // Consumir el salto de línea pendiente
 
                             val estudiantes = estudianteCRUD.cargarEstudiantes()
-                            if (index >= 0 && index < estudiantes.size) {
-                                scanner.nextLine() // Consumir el salto de línea pendiente
+                            val estudianteAActualizar = estudiantes.find { it.codigoEstudiante == codigo }
+
+                            if (estudianteAActualizar != null) {
                                 println("Ingrese el nuevo nombre del estudiante:")
                                 val nuevoNombre = scanner.nextLine()
                                 println("Ingrese la nueva fecha de nacimiento (dd/MM/yyyy):")
@@ -73,28 +80,32 @@ fun main(args: Array<String>) {
                                 val nuevoActivo = scanner.nextBoolean()
 
                                 val nuevoEstudiante = Estudiante(
-                                    estudiantes[index].codigoEstudiante,
+                                    codigo,
                                     nuevoNombre,
                                     nuevaFechaNacimiento,
                                     nuevoPromedio,
                                     nuevoActivo
                                 )
-                                estudianteCRUD.actualizarEstudiante(index, nuevoEstudiante)
+
+                                estudianteCRUD.actualizarEstudiantePorCodigo(codigo, nuevoEstudiante)
                             } else {
-                                println("Índice del estudiante inválido.")
+                                println("No se encontró un estudiante con ese código.")
                             }
                         }
+
+
                         4 -> {
-                            println("Ingrese el índice del estudiante a eliminar:")
-                            val index = scanner.nextInt()
+                            println("Ingrese el código del estudiante a eliminar:")
+                            val codigo = scanner.nextInt()
                             scanner.nextLine() // Consumir el salto de línea pendiente
 
                             val estudiantes = estudianteCRUD.cargarEstudiantes()
-                            if (index >= 0 && index < estudiantes.size) {
-                                estudianteCRUD.eliminarEstudiante(index)
+                            val estudianteAEliminar = estudiantes.find { it.codigoEstudiante == codigo }
+                            if (estudianteAEliminar != null) {
+                                estudianteCRUD.eliminarEstudiantePorCodigo(codigo)
                                 println("Estudiante eliminado con éxito.")
                             } else {
-                                println("Índice del estudiante inválido.")
+                                println("No se encontró un estudiante con ese código.")
                             }
                         }
                         5 -> break  // Salir del CRUD de estudiantes
@@ -103,19 +114,22 @@ fun main(args: Array<String>) {
                 }
             }
             2 -> {
-                val materiaCRUD = CrudMateria()
-
                 while (true) {
                     println("==== CRUD Materia ====")
                     println("1. Crear Materia")
                     println("2. Listar Materias")
                     println("3. Actualizar Materia")
-                    println("4. Eliminar Materia")
-                    println("5. Volver al menú principal")
+                    println("4. Eliminar Materia por índice")
+                    println("5. Eliminar Materia por código")
+                    println("6. Volver al menú principal")
                     println("Ingrese la opción deseada:")
 
                     when (scanner.nextInt()) {
                         1 -> {
+                            scanner.nextLine() // Consumir el salto de línea pendiente
+                            println("Ingrese el código de la Materia:")
+                            val codigoMateria = scanner.nextInt()
+                            scanner.nextLine() // Consumir el salto de línea pendiente
                             scanner.nextLine() // Consumir el salto de línea pendiente
                             println("Ingrese el nombre de la materia:")
                             val nombreMateria = scanner.nextLine()
@@ -167,17 +181,19 @@ fun main(args: Array<String>) {
                                 println("Índice de la materia inválido.")
                             }
                         }
+
                         4 -> {
-                            println("Ingrese el índice de la materia a eliminar:")
-                            val index = scanner.nextInt()
+                            println("Ingrese el código de la materia a eliminar:")
+                            val codigo = scanner.nextInt()
                             scanner.nextLine() // Consumir el salto de línea pendiente
 
                             val materias = materiaCRUD.cargarMaterias()
-                            if (index >= 0 && index < materias.size) {
-                                materiaCRUD.eliminarMateria(index)
+                            val materiaAEliminar = materias.find { it.codigoMateria == codigo }
+                            if (materiaAEliminar != null) {
+                                materiaCRUD.eliminarMateriaPorCodigo(codigo)
                                 println("Materia eliminada con éxito.")
                             } else {
-                                println("Índice de la materia inválido.")
+                                println("No se encontró una materia con ese código.")
                             }
                         }
                         5 -> break  // Salir del CRUD de materias

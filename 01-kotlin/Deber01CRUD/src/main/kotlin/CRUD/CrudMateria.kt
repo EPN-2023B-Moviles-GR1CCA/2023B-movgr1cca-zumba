@@ -36,16 +36,19 @@ class CrudMateria {
     }
 
 
-    fun eliminarMateria(index: Int) {
+    fun eliminarMateriaPorCodigo(codigoMateria: Int) {
         val materias = cargarMaterias()
-        if (index >= 0 && index < materias.size) {
-            materias.removeAt(index)
+        val materiaAEliminar = materias.find { it.codigoMateria == codigoMateria }
+
+        if (materiaAEliminar != null) {
+            materias.remove(materiaAEliminar)
             guardarMaterias(materias)
             println("Materia eliminada con éxito.")
         } else {
-            println("Índice de la materia es inválido.")
+            println("No se encontró la materia con el código $codigoMateria.")
         }
     }
+
     fun cargarMaterias(): MutableList<Materia> {
         val materias: MutableList<Materia> = mutableListOf()
         if (archivo.exists()) {

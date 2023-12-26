@@ -29,27 +29,34 @@ class CrudEstudiante() {
             }
         }
 
-        fun actualizarEstudiante(index: Int, nuevoEstudiante: Estudiante) {
-            val estudiantes = cargarEstudiantes()
-            if (index >= 0 && index < estudiantes.size) {
-                estudiantes[index] = nuevoEstudiante
-                guardarEstudiantes(estudiantes)
-                println("Estudiante actualizado con éxito.")
-            }
-        }
+    fun actualizarEstudiantePorCodigo(codigo: Int, nuevoEstudiante: Estudiante) {
+        val estudiantes = cargarEstudiantes()
+        val index = estudiantes.indexOfFirst { it.codigoEstudiante == codigo }
 
-        fun eliminarEstudiante(index: Int) {
-            val estudiantes = cargarEstudiantes()
-            if (index >= 0 && index < estudiantes.size) {
-                estudiantes.removeAt(index)
-                guardarEstudiantes(estudiantes)
-                println("Estudiante eliminado con éxito.")
-            } else {
-                println("Índice del estudiante es inválido.")
-            }
+        if (index != -1) {
+            estudiantes[index] = nuevoEstudiante
+            guardarEstudiantes(estudiantes)
+            println("Estudiante actualizado con éxito.")
+        } else {
+            println("No se encontró un estudiante con ese código.")
         }
+    }
 
-        fun cargarEstudiantes(): MutableList<Estudiante> {
+    fun eliminarEstudiantePorCodigo(codigoEstudiante: Int) {
+        val estudiantes = cargarEstudiantes()
+        val estudianteAEliminar = estudiantes.find { it.codigoEstudiante == codigoEstudiante }
+
+        if (estudianteAEliminar != null) {
+            estudiantes.remove(estudianteAEliminar)
+            guardarEstudiantes(estudiantes)
+            println("Estudiante eliminado con éxito.")
+        } else {
+            println("No se encontró al estudiante con el código $codigoEstudiante.")
+        }
+    }
+
+
+    fun cargarEstudiantes(): MutableList<Estudiante> {
             val estudiantes: MutableList<Estudiante> = mutableListOf()
             if (archivo.exists()) {
                 archivo.bufferedReader(Charsets.UTF_8).use { reader ->

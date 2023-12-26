@@ -9,5 +9,8 @@ class Estudiante(var codigoEstudiante: Int,
                  var fechaNacimiento: Date,
                  var  promedio: Double,
                  var activo: Boolean): Serializable {
+    override fun toString(): String {
+        return "Código: $codigoEstudiante, Nombre: $nombreEstudiante, Fecha Nacimiento: $fechaNacimiento, Promedio: $promedio, Activo: $activo"
+    }
 
 }
