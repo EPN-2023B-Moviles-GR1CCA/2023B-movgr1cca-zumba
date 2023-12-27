@@ -92,8 +92,6 @@ fun main() {
                                 println("No se encontró un estudiante con ese código.")
                             }
                         }
-
-
                         4 -> {
                             println("Ingrese el código del estudiante a eliminar:")
                             val codigo = scanner.nextInt()
@@ -119,30 +117,31 @@ fun main() {
                     println("1. Crear Materia")
                     println("2. Listar Materias")
                     println("3. Actualizar Materia")
-                    println("4. Eliminar Materia por índice")
-                    println("5. Eliminar Materia por código")
-                    println("6. Volver al menú principal")
+                    println("4. Eliminar Materia por código")
+                    println("5. Volver al menú principal")
                     println("Ingrese la opción deseada:")
-
                     when (scanner.nextInt()) {
                         1 -> {
                             scanner.nextLine() // Consumir el salto de línea pendiente
                             println("Ingrese el código de la Materia:")
                             val codigoMateria = scanner.nextInt()
                             scanner.nextLine() // Consumir el salto de línea pendiente
-                            scanner.nextLine() // Consumir el salto de línea pendiente
+
                             println("Ingrese el nombre de la materia:")
                             val nombreMateria = scanner.nextLine()
+
                             println("Ingrese la cantidad de créditos de la materia:")
                             val creditos = scanner.nextInt()
                             scanner.nextLine() // Consumir el salto de línea pendiente
+
                             println("Ingrese el costo de la materia:")
                             val costo = scanner.nextDouble()
                             scanner.nextLine() // Consumir el salto de línea pendiente
+
                             println("La materia es obligatoria? (true/false):")
                             val esObligatoria = scanner.nextBoolean()
 
-                            val materia = Materia(0, nombreMateria, creditos, costo, esObligatoria)
+                            val materia = Materia(codigoMateria, nombreMateria, creditos, costo, esObligatoria)
                             materiaCRUD.crearMateria(materia)
                         }
                         2 -> {
@@ -151,37 +150,41 @@ fun main() {
                             println("================")
                         }
                         3 -> {
-                            println("Ingrese el índice de la materia a actualizar:")
-                            val index = scanner.nextInt()
+                            println("Ingrese el código de la materia a actualizar:")
+                            val codigo = scanner.nextInt()
                             scanner.nextLine() // Consumir el salto de línea pendiente
 
                             val materias = materiaCRUD.cargarMaterias()
-                            if (index >= 0 && index < materias.size) {
-                                scanner.nextLine() // Consumir el salto de línea pendiente
+                            val materiaAActualizar = materias.find { it.codigoMateria == codigo }
+
+                            if (materiaAActualizar != null) {
                                 println("Ingrese el nuevo nombre de la materia:")
                                 val nuevoNombreMateria = scanner.nextLine()
+
                                 println("Ingrese la nueva cantidad de créditos de la materia:")
                                 val nuevosCreditos = scanner.nextInt()
                                 scanner.nextLine() // Consumir el salto de línea pendiente
+
                                 println("Ingrese el nuevo costo de la materia:")
                                 val nuevoCosto = scanner.nextDouble()
                                 scanner.nextLine() // Consumir el salto de línea pendiente
+
                                 println("La materia es obligatoria? (true/false):")
                                 val nuevaEsObligatoria = scanner.nextBoolean()
 
                                 val nuevaMateria = Materia(
-                                    materias[index].codigoMateria,
+                                    codigo,
                                     nuevoNombreMateria,
                                     nuevosCreditos,
                                     nuevoCosto,
                                     nuevaEsObligatoria
                                 )
-                                materiaCRUD.actualizarMateria(index, nuevaMateria)
+
+                                materiaCRUD.actualizarMateriaPorCodigo(codigo, nuevaMateria)
                             } else {
-                                println("Índice de la materia inválido.")
+                                println("No se encontró una materia con ese código.")
                             }
                         }
-
                         4 -> {
                             println("Ingrese el código de la materia a eliminar:")
                             val codigo = scanner.nextInt()
@@ -201,10 +204,9 @@ fun main() {
                     }
                 }
             }
-            3 -> break@loop
+            3 -> break
             else -> println("Opción inválida.")
         }
     }
-
     println("¡Gracias por la Interacción!")
 }

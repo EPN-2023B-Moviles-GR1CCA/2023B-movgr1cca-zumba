@@ -19,21 +19,29 @@ class CrudMateria {
         if (materias.isNotEmpty()) {
             for ((index, materia) in materias.withIndex()) {
                 println("=== Materia ${index + 1} ===")
-                println(materia)
+                println("Código: ${materia.codigoMateria}, Nombre: ${materia.nombreMateria}," +
+                        " Créditos: ${materia.creditos}, Costo: ${materia.costo}, Obligatoria: ${materia.esObligatoria}")
             }
+            println("===================")
         } else {
             println("No hay materias registradas.")
         }
     }
 
-    fun actualizarMateria(index: Int, nuevaMateria: Materia) {
+
+    fun actualizarMateriaPorCodigo(codigo: Int, nuevaMateria: Materia) {
         val materias = cargarMaterias()
-        if (index >= 0 && index < materias.size) {
+        val index = materias.indexOfFirst { it.codigoMateria == codigo }
+
+        if (index != -1) {
             materias[index] = nuevaMateria
             guardarMaterias(materias)
             println("Materia actualizada con éxito.")
+        } else {
+            println("No se encontró una materia con ese código.")
         }
     }
+
 
 
     fun eliminarMateriaPorCodigo(codigoMateria: Int) {

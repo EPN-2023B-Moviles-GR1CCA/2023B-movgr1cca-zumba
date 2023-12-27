@@ -17,7 +17,7 @@ class CrudEstudiante() {
             println("Estudiante creado con éxito.")
         }
 
-        fun listarEstudiantes() {
+       /* fun listarEstudiantes() {
             val estudiantes = cargarEstudiantes()
             if (estudiantes.isNotEmpty()) {
                 for ((index, estudiante) in estudiantes.withIndex()) {
@@ -27,7 +27,29 @@ class CrudEstudiante() {
             } else {
                 println("No hay estudiantes registrados.")
             }
-        }
+        }*/
+       fun listarEstudiantes() {
+           val formatoFecha = SimpleDateFormat("dd/MM/yyyy")
+           val estudiantes = cargarEstudiantes()
+
+           if (estudiantes.isNotEmpty()) {
+               var estudianteIndex = 1
+               estudiantes.forEach { estudiante ->
+                   println("=== Estudiante $estudianteIndex ===")
+                   println("Código: ${estudiante.codigoEstudiante}, Nombre: ${estudiante.nombreEstudiante}," +
+                           " Fecha Nacimiento: ${formatoFecha.format(estudiante.fechaNacimiento)}," +
+                           " Promedio: ${estudiante.promedio}, Activo: ${estudiante.activo}")
+                   estudianteIndex++
+               }
+               println("===================")
+           } else {
+               println("No hay estudiantes registrados.")
+           }
+       }
+
+
+
+
 
     fun actualizarEstudiantePorCodigo(codigo: Int, nuevoEstudiante: Estudiante) {
         val estudiantes = cargarEstudiantes()
