@@ -8,3 +8,4 @@
 12,Dario,02/03/2023,true,24.0
 13,Gabriel,23/03/2024,true,25.0
 12,Romario,23/02/2023,false,12.0
+13,Ramiro,12/02/2000,true,19.5

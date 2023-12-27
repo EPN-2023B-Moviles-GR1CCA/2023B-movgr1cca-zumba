@@ -49,6 +49,24 @@ class CrudEstudiante() {
 
 
 
+    fun buscarEstudiantePorNombre(nombre: String): Estudiante? {
+        val estudiantes = cargarEstudiantes()
+        val formatoFecha = SimpleDateFormat("dd/MM/yyyy")
+
+        // Utilizamos find para buscar el estudiante por nombre
+        val estudianteEncontrado = estudiantes.find { it.nombreEstudiante == nombre }
+
+        if (estudianteEncontrado != null) {
+            println("Estudiante encontrado:")
+            println("Código: ${estudianteEncontrado.codigoEstudiante}, Nombre: ${estudianteEncontrado.nombreEstudiante}," +
+                    " Fecha Nacimiento: ${formatoFecha.format(estudianteEncontrado.fechaNacimiento)}," +
+                    " Promedio: ${estudianteEncontrado.promedio}, Activo: ${estudianteEncontrado.activo}")
+        } else {
+            println("No se encontró un estudiante con el nombre '$nombre'.")
+        }
+
+        return estudianteEncontrado
+    }
 
 
     fun actualizarEstudiantePorCodigo(codigo: Int, nuevoEstudiante: Estudiante) {

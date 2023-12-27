@@ -24,9 +24,10 @@ fun main() {
                     println("******* Selecione una opcion para Estudiante ******")
                     println("1. Crear Estudiante")
                     println("2. Listar Estudiantes")
-                    println("3. Actualizar Estudiante")
-                    println("4. Eliminar Estudiante por código")
-                    println("5. Volver al menú principal")
+                    println("3. Listar Estudiante por codigo")
+                    println("4. Actualizar Estudiante")
+                    println("5. Eliminar Estudiante por código")
+                    println("6. Volver al menú principal")
                     println("****** Ingrese la opción deseada:")
 
                     when (scanner.nextInt()) {
@@ -46,7 +47,8 @@ fun main() {
                             println("Ingrese el promedio del estudiante:")
                             val promedio = scanner.nextDouble()
                             scanner.nextLine() // Consumir el salto de línea pendiente
-                            println("Estudiante activo? (true/false):")
+
+                            println("Estudiante activo? (True/False):")
                             val activo = scanner.nextBoolean()
 
                             val estudiante = Estudiante(codigoEstudiante, nombre, fechaNacimiento, promedio, activo)
@@ -60,6 +62,13 @@ fun main() {
 
                         }
                         3 -> {
+                            scanner.nextLine() // Consumir el salto de línea pendiente
+                            println("Ingrese el nombre del estudiante a buscar:")
+                            val nombreBusqueda = scanner.nextLine()
+                            estudianteCRUD.buscarEstudiantePorNombre(nombreBusqueda)
+                        }
+
+                        4 -> {
                             println("Ingrese el código del estudiante a actualizar:")
                             val codigo = scanner.nextInt()
                             scanner.nextLine() // Consumir el salto de línea pendiente
@@ -92,7 +101,7 @@ fun main() {
                                 println("No se encontró un estudiante con ese código.")
                             }
                         }
-                        4 -> {
+                        5 -> {
                             println("Ingrese el código del estudiante a eliminar:")
                             val codigo = scanner.nextInt()
                             scanner.nextLine() // Consumir el salto de línea pendiente
@@ -106,7 +115,7 @@ fun main() {
                                 println("No se encontró un estudiante con ese código.")
                             }
                         }
-                        5 -> break  // Salir del CRUD de estudiantes
+                        6 -> break  // Salir del CRUD de estudiantes
                         else -> println("Opción inválida.")
                     }
                 }
@@ -169,7 +178,7 @@ fun main() {
                                 val nuevoCosto = scanner.nextDouble()
                                 scanner.nextLine() // Consumir el salto de línea pendiente
 
-                                println("La materia es obligatoria? (true/false):")
+                                println("La materia es obligatoria? (Si/No):")
                                 val nuevaEsObligatoria = scanner.nextBoolean()
 
                                 val nuevaMateria = Materia(
