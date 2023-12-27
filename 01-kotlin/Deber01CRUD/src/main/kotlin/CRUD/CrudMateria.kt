@@ -29,6 +29,55 @@ class CrudMateria {
     }
 
 
+    // En la clase CrudMateria
+   /* fun buscarMateriaPorNombre(nombre: String): List<Materia> {
+        val materias = cargarMaterias()
+        val materiasEncontradas = materias.filter { it.nombreMateria.contains(nombre, ignoreCase = true) }
+
+        if (materiasEncontradas.isNotEmpty()) {
+            println("=== Materias Encontradas ===")
+            for ((index, materia) in materiasEncontradas.withIndex()) {
+                println("=== Materia ${index + 1} ===")
+                println("Código: ${materia.codigoMateria}")
+                println("Nombre: ${materia.nombreMateria}")
+                println("Créditos: ${materia.creditos}")
+                println("Costo: ${materia.costo}")
+                println("Obligatoria: ${materia.esObligatoria}")
+            }
+            println("===========================")
+        } else {
+            println("No se encontraron materias con el nombre: $nombre")
+        }
+
+        return materiasEncontradas
+    }*/
+    fun buscarMateriaPorNombre(nombre: String): List<Materia> {
+        val materias = cargarMaterias()
+        val materiasEncontradas = materias.filter { it.nombreMateria.contains(nombre, ignoreCase = true) }
+
+        if (materiasEncontradas.isNotEmpty()) {
+            println("=== Materias Encontradas ===")
+            for ((index, materia) in materiasEncontradas.withIndex()) {
+                println("=== Materia ${index + 1} ===")
+                val infoMateria = buildString {
+                    append("Código: ${materia.codigoMateria}, ")
+                    append("Nombre: ${materia.nombreMateria}, ")
+                    append("Créditos: ${materia.creditos}, ")
+                    append("Costo: ${materia.costo}, ")
+                    append("Obligatoria: ${materia.esObligatoria}")
+                }
+                println(infoMateria)
+            }
+            println("===========================")
+        } else {
+            println("No se encontraron materias con el nombre: $nombre")
+        }
+
+        return materiasEncontradas
+    }
+
+
+
     fun actualizarMateriaPorCodigo(codigo: Int, nuevaMateria: Materia) {
         val materias = cargarMaterias()
         val index = materias.indexOfFirst { it.codigoMateria == codigo }

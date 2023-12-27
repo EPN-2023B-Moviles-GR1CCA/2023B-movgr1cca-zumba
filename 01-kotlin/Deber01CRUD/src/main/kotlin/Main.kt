@@ -24,7 +24,7 @@ fun main() {
                     println("******* Selecione una opcion para Estudiante ******")
                     println("1. Crear Estudiante")
                     println("2. Listar Estudiantes")
-                    println("3. Listar Estudiante por codigo")
+                    println("3. Listar Estudiante por Nombre")
                     println("4. Actualizar Estudiante")
                     println("5. Eliminar Estudiante por código")
                     println("6. Volver al menú principal")
@@ -56,7 +56,7 @@ fun main() {
                         }
 
                         2 -> {
-                            println("=== Estudiantes ===")
+                            println("**** Mostrando todos los Estudiantes ******")
                             estudianteCRUD.listarEstudiantes()
                             println("===================")
 
@@ -110,7 +110,6 @@ fun main() {
                             val estudianteAEliminar = estudiantes.find { it.codigoEstudiante == codigo }
                             if (estudianteAEliminar != null) {
                                 estudianteCRUD.eliminarEstudiantePorCodigo(codigo)
-                                println("Estudiante eliminado con éxito.")
                             } else {
                                 println("No se encontró un estudiante con ese código.")
                             }
@@ -125,9 +124,10 @@ fun main() {
                     println("***** Seleccione una opcion para Materia ******")
                     println("1. Crear Materia")
                     println("2. Listar Materias")
-                    println("3. Actualizar Materia")
-                    println("4. Eliminar Materia por código")
-                    println("5. Volver al menú principal")
+                    println("3. Listar  Materia por Nombre")
+                    println("4. Actualizar Materia")
+                    println("5. Eliminar Materia por código")
+                    println("6. Volver al menú principal")
                     println("Ingrese la opción deseada:")
                     when (scanner.nextInt()) {
                         1 -> {
@@ -154,11 +154,18 @@ fun main() {
                             materiaCRUD.crearMateria(materia)
                         }
                         2 -> {
-                            println("=== Materias ===")
+                            println("***** Mostrando todas las Materias ******")
                             materiaCRUD.listarMaterias()
                             println("================")
                         }
                         3 -> {
+                            scanner.nextLine() // Consumir el salto de línea pendiente
+                            println("Ingrese el nombre de la materia a buscar:")
+                            val nombreMateriaBuscar = scanner.nextLine()
+                            val materiasEncontradas = materiaCRUD.buscarMateriaPorNombre(nombreMateriaBuscar)
+
+                        }
+                        4 -> {
                             println("Ingrese el código de la materia a actualizar:")
                             val codigo = scanner.nextInt()
                             scanner.nextLine() // Consumir el salto de línea pendiente
@@ -194,7 +201,7 @@ fun main() {
                                 println("No se encontró una materia con ese código.")
                             }
                         }
-                        4 -> {
+                        5 -> {
                             println("Ingrese el código de la materia a eliminar:")
                             val codigo = scanner.nextInt()
                             scanner.nextLine() // Consumir el salto de línea pendiente
@@ -203,12 +210,11 @@ fun main() {
                             val materiaAEliminar = materias.find { it.codigoMateria == codigo }
                             if (materiaAEliminar != null) {
                                 materiaCRUD.eliminarMateriaPorCodigo(codigo)
-                                println("Materia eliminada con éxito.")
                             } else {
                                 println("No se encontró una materia con ese código.")
                             }
                         }
-                        5 -> break  // Salir del CRUD de materias
+                        6 -> break  // Salir del CRUD de materias
                         else -> println("Opción inválida.")
                     }
                 }
