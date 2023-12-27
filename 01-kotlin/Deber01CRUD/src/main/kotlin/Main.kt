@@ -12,22 +12,22 @@ fun main() {
     val estudianteCRUD = CrudEstudiante()
 
     loop@ while (true) {
-        println("****** ESCOJA LA OPCION QUE DESEA REALIZAR*********")
-        println("1. CRUD Estudiante")
-        println("2. CRUD Materia")
+        println("****** ESCOJA LA OPCION QUE DESEA REALIZAR *********")
+        println("1. Ver Estudiante")
+        println("2. Ver Materia")
         println("3. Salir")
-        println("Ingrese la opción deseada:")
+        println("****** Ingrese el número de la opción que desea realizar:")
 
         when (scanner.nextInt()) {
             1 -> {
                 while (true) {
-                    println("==== CRUD Estudiante ====")
+                    println("******* Selecione una opcion para Estudiante ******")
                     println("1. Crear Estudiante")
                     println("2. Listar Estudiantes")
                     println("3. Actualizar Estudiante")
                     println("4. Eliminar Estudiante por código")
                     println("5. Volver al menú principal")
-                    println("Ingrese la opción deseada:")
+                    println("****** Ingrese la opción deseada:")
 
                     when (scanner.nextInt()) {
                         1 -> {
@@ -113,7 +113,7 @@ fun main() {
             }
             2 -> {
                 while (true) {
-                    println("==== CRUD Materia ====")
+                    println("***** Seleccione una opcion para Materia ******")
                     println("1. Crear Materia")
                     println("2. Listar Materias")
                     println("3. Actualizar Materia")
