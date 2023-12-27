@@ -1,1 +1,2 @@
-12,Romario,23/02/2023,false,12.0
+12,Raquel,10/02/2023,true,19.5
+13,Marisol,12/04/2000,false,19.0

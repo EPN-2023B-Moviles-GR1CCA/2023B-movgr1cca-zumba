@@ -25,7 +25,7 @@ class CrudEstudiante() {
            if (estudiantes.isNotEmpty()) {
                var estudianteIndex = 1
                estudiantes.forEach { estudiante ->
-                   println("=== Estudiante $estudianteIndex ===")
+                   println("**** Estudiante $estudianteIndex *****")
                    println("Código: ${estudiante.codigoEstudiante}, Nombre: ${estudiante.nombreEstudiante}," +
                            " Fecha Nacimiento: ${formatoFecha.format(estudiante.fechaNacimiento)}," +
                            " Promedio: ${estudiante.promedio}, Activo: ${estudiante.activo}")
@@ -51,6 +51,7 @@ class CrudEstudiante() {
             println("Código: ${estudianteEncontrado.codigoEstudiante}, Nombre: ${estudianteEncontrado.nombreEstudiante}," +
                     " Fecha Nacimiento: ${formatoFecha.format(estudianteEncontrado.fechaNacimiento)}," +
                     " Promedio: ${estudianteEncontrado.promedio}, Activo: ${estudianteEncontrado.activo}")
+            println("========================")
         } else {
             println("No se encontró un estudiante con el nombre '$nombre'.")
         }

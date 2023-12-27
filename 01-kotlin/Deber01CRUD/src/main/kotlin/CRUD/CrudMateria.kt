@@ -18,7 +18,7 @@ class CrudMateria {
         val materias = cargarMaterias()
         if (materias.isNotEmpty()) {
             for ((index, materia) in materias.withIndex()) {
-                println("=== Materia ${index + 1} ===")
+                println("**** Materia ${index + 1} ******")
                 println("Código: ${materia.codigoMateria}, Nombre: ${materia.nombreMateria}," +
                         " Créditos: ${materia.creditos}, Costo: ${materia.costo}, Obligatoria: ${materia.esObligatoria}")
             }

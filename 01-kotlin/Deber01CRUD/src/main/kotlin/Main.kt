@@ -23,8 +23,8 @@ fun main() {
                 while (true) {
                     println("******* Selecione una opcion para Estudiante ******")
                     println("1. Crear Estudiante")
-                    println("2. Listar Estudiantes")
-                    println("3. Listar Estudiante por Nombre")
+                    println("2. Mostrar todos los Estudiantes")
+                    println("3. Mostrar Estudiante por Nombre")
                     println("4. Actualizar Estudiante")
                     println("5. Eliminar Estudiante por código")
                     println("6. Volver al menú principal")
@@ -123,8 +123,8 @@ fun main() {
                 while (true) {
                     println("***** Seleccione una opcion para Materia ******")
                     println("1. Crear Materia")
-                    println("2. Listar Materias")
-                    println("3. Listar  Materia por Nombre")
+                    println("2. Mostrar todas las  Materias")
+                    println("3. Mostrar Materia por Nombre")
                     println("4. Actualizar Materia")
                     println("5. Eliminar Materia por código")
                     println("6. Volver al menú principal")
@@ -185,7 +185,7 @@ fun main() {
                                 val nuevoCosto = scanner.nextDouble()
                                 scanner.nextLine() // Consumir el salto de línea pendiente
 
-                                println("La materia es obligatoria? (True/False):")
+                                println("La materia es obligatoria? (True/False1):")
                                 val nuevaEsObligatoria = scanner.nextBoolean()
 
                                 val nuevaMateria = Materia(
