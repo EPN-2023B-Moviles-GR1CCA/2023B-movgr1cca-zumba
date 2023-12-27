@@ -185,7 +185,7 @@ fun main() {
                                 val nuevoCosto = scanner.nextDouble()
                                 scanner.nextLine() // Consumir el salto de línea pendiente
 
-                                println("La materia es obligatoria? (Si/No):")
+                                println("La materia es obligatoria? (True/False):")
                                 val nuevaEsObligatoria = scanner.nextBoolean()
 
                                 val nuevaMateria = Materia(

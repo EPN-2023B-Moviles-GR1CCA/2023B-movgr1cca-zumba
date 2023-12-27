@@ -17,17 +17,7 @@ class CrudEstudiante() {
             println("Estudiante creado con éxito.")
         }
 
-       /* fun listarEstudiantes() {
-            val estudiantes = cargarEstudiantes()
-            if (estudiantes.isNotEmpty()) {
-                for ((index, estudiante) in estudiantes.withIndex()) {
-                    println("=== Estudiante ${index + 1} ===")
-                    println(estudiante)
-                }
-            } else {
-                println("No hay estudiantes registrados.")
-            }
-        }*/
+
        fun listarEstudiantes() {
            val formatoFecha = SimpleDateFormat("dd/MM/yyyy")
            val estudiantes = cargarEstudiantes()

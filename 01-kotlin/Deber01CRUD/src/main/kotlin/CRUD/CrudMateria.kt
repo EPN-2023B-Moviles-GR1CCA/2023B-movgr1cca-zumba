@@ -29,28 +29,6 @@ class CrudMateria {
     }
 
 
-    // En la clase CrudMateria
-   /* fun buscarMateriaPorNombre(nombre: String): List<Materia> {
-        val materias = cargarMaterias()
-        val materiasEncontradas = materias.filter { it.nombreMateria.contains(nombre, ignoreCase = true) }
-
-        if (materiasEncontradas.isNotEmpty()) {
-            println("=== Materias Encontradas ===")
-            for ((index, materia) in materiasEncontradas.withIndex()) {
-                println("=== Materia ${index + 1} ===")
-                println("Código: ${materia.codigoMateria}")
-                println("Nombre: ${materia.nombreMateria}")
-                println("Créditos: ${materia.creditos}")
-                println("Costo: ${materia.costo}")
-                println("Obligatoria: ${materia.esObligatoria}")
-            }
-            println("===========================")
-        } else {
-            println("No se encontraron materias con el nombre: $nombre")
-        }
-
-        return materiasEncontradas
-    }*/
     fun buscarMateriaPorNombre(nombre: String): List<Materia> {
         val materias = cargarMaterias()
         val materiasEncontradas = materias.filter { it.nombreMateria.contains(nombre, ignoreCase = true) }
