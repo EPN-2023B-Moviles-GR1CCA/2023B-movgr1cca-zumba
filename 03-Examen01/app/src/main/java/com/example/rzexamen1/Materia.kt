@@ -29,7 +29,7 @@ class Materia(
 
     //Metodos set
 
-fun setcodigoMateria(codigoMateria: Int){
+/*fun setcodigoMateria(codigoMateria: Int){
     this.codigoMateria = codigoMateria
 }
 
@@ -64,11 +64,11 @@ fun setcodigoMateria(codigoMateria: Int){
     }
 
 
-    fun getCosto(): Double{
+    fun getcosto(): Double{
         return costo
     }
 
-    fun getCreditos(): Double? {
+    fun getcreditos(): Double? {
         return creditos
     }
 
@@ -89,7 +89,7 @@ fun setcodigoMateria(codigoMateria: Int){
        values.put("esObligatoro", this.esObligatorio)
 
        return db.insert("t_materia", null,values)
-    }
+    }*/
 
     //Funcion
 

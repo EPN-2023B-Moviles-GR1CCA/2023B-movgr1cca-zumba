@@ -14,6 +14,15 @@
         tools:ignore="ExtraText"
         tools:targetApi="31">
         <activity
+            android:name=".VerMateria"
+            android:exported="false" />
+        <activity
+            android:name=".ActualizarMateria"
+            android:exported="false" />
+        <activity
+            android:name=".ActualizarEstudiante"
+            android:exported="false" />
+        <activity
             android:name=".BMateria"
             android:exported="false" />
         <activity
