@@ -4,6 +4,91 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#44A8D5"
     tools:context=".BEstudiante">
 
+    <EditText
+        android:id="@+id/editTextText_NombreEs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Nombre"
+        android:textColor="#FFFFFF"
+        tools:layout_editor_absoluteX="100dp"
+        tools:layout_editor_absoluteY="102dp" />
+
+    <EditText
+        android:id="@+id/editTextText_FechaNacimiento"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Fecha Nacimiento"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@+id/editTextText_NombreEs"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/editTextText_NombreEs"
+        app:layout_constraintTop_toBottomOf="@+id/editTextText_NombreEs" />
+
+    <EditText
+        android:id="@+id/editTextText_Activo"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="text"
+        android:text="Activo"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@+id/editTexPromedio"
+        app:layout_constraintStart_toStartOf="@+id/editTexPromedio"
+        tools:layout_editor_absoluteY="315dp" />
+
+    <TextView
+        android:id="@+id/textView_Estudiante"
+        android:layout_width="183dp"
+        android:layout_height="50dp"
+        android:background="#FFFFFF"
+        android:text="Estudiante"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/editTextText_NombreEs"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.096" />
+
+    <ListView
+        android:id="@+id/lvView_Estudiante"
+        android:layout_width="375dp"
+        android:layout_height="162dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btnCrearEstudiante"
+        app:layout_constraintVertical_bias="0.156" />
+
+    <Button
+        android:id="@+id/btnCrearEstudiante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="Crear"
+        app:layout_constraintEnd_toEndOf="@+id/editTextText_Activo"
+        app:layout_constraintStart_toStartOf="@+id/editTextText_Activo"
+        app:layout_constraintTop_toBottomOf="@+id/editTextText_Activo" />
+
+    <EditText
+        android:id="@+id/editTexPromedio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="numberDecimal"
+        android:textColor="#FFFFFF"
+        app:layout_constraintEnd_toEndOf="@+id/editTextText_FechaNacimiento"
+        app:layout_constraintStart_toStartOf="@+id/editTextText_FechaNacimiento"
+        tools:layout_editor_absoluteY="256dp"
+        tools:text="Promedio" />
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "310220804765",
+    "project_id": "b2023-examen1rz",
+    "storage_bucket": "b2023-examen1rz.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:310220804765:android:2437248aee91ae0f2cfa74",
+        "android_client_info": {
+          "package_name": "com.example.rzexamen1"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDZ2adexP-iY9YH5PBwdIYzN1FY0rqTyI8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

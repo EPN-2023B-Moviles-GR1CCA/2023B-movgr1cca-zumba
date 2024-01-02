@@ -4,6 +4,17 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#74D0DC"
     tools:context=".BMateria">
 
+    <Button
+        android:id="@+id/btnCrearMateria"
+        android:layout_width="207dp"
+        android:layout_height="91dp"
+        android:background="@android:drawable/alert_light_frame"
+        android:text="Crear  Materia"
+        android:textColor="#161717"
+        android:textSize="20sp"
+        tools:layout_editor_absoluteX="173dp"
+        tools:layout_editor_absoluteY="44dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
