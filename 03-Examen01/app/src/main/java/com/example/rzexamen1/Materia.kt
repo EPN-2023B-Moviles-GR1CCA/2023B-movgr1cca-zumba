@@ -25,13 +25,59 @@ class Materia( var codigoMateria: Int,
         context
     }
 
-    //Metodos get and set
+    //Metodos set
 
 fun setcodigoMateria(codigoMateria: Int){
     this.codigoMateria = codigoMateria
 }
 
-   //FUNCIOn Insertar
+    fun setnombreMateria(nombreMateria: String){
+        this.nombreMateria = nombreMateria
+    }
+
+
+    fun setCreditos(creditos: Double){
+        this.creditos = creditos
+    }
+
+    fun setCosto(costo: Double){
+        this.costo = costo
+    }
+
+    fun setesObligatorio(esObligatorio: Boolean){
+        this.esObligatorio = esObligatorio
+    }
+
+
+  //Metodo get
+
+
+  fun getcodigoMateria(): Int {
+      return  codigoMateria
+  }
+
+
+    fun getnombreMateria(): String? {
+        return nombreMateria
+    }
+
+
+    fun getCosto(): Double{
+        return costo
+    }
+
+    fun getCreditos(): Double? {
+        return creditos
+    }
+
+    fun getesObligatorio(): Boolean{
+        return esObligatorio
+    }
+
+
+
+    
+   //Funcion Insertar
     fun InsertarMateria(): Long{
        val dbHelper: BaseDatos = BaseDatos(this.context)
        val db: SQLiteDatabase = dbHelper.writableDatabase
