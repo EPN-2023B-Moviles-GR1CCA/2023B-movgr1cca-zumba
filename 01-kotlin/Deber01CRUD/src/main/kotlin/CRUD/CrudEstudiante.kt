@@ -3,6 +3,7 @@ package CRUD
 import Entidades.Estudiante
 import java.io.File
 import java.text.SimpleDateFormat
+import java.util.*
 
 class CrudEstudiante() {
 
@@ -60,18 +61,53 @@ class CrudEstudiante() {
     }
 
 
-    fun actualizarEstudiantePorCodigo(codigo: Int, nuevoEstudiante: Estudiante) {
+    fun actualizarEstudiantePorCodigo(codigo: Int) {
         val estudiantes = cargarEstudiantes()
-        val index = estudiantes.indexOfFirst { it.codigoEstudiante == codigo }
+        val estudianteAActualizar = estudiantes.find { it.codigoEstudiante == codigo }
+        val scanner = Scanner(System.`in`)
+        val formatoFecha = SimpleDateFormat("dd/MM/yyyy")
 
-        if (index != -1) {
-            estudiantes[index] = nuevoEstudiante
-            guardarEstudiantes(estudiantes)
-            println("Estudiante actualizado con éxito.")
+        if (estudianteAActualizar != null) {
+            println("Estudiante encontrado:")
+            println("Código: ${estudianteAActualizar.codigoEstudiante}, Nombre: ${estudianteAActualizar.nombreEstudiante}," +
+                    " Fecha Nacimiento: ${formatoFecha.format(estudianteAActualizar.fechaNacimiento)}," +
+                    " Promedio: ${estudianteAActualizar.promedio}, Activo: ${estudianteAActualizar.activo}")
+
+            println("Seleccione el número del atributo que desea actualizar:")
+            println("1. Nombre")
+            println("2. Fecha de Nacimiento")
+            println("3. Promedio")
+            println("4. Activo")
+
+            when (scanner.nextInt()) {
+                1 -> {
+                    println("Ingrese el nuevo nombre del estudiante:")
+                    val nuevoNombre = scanner.next()
+                    estudianteAActualizar.nombreEstudiante = nuevoNombre
+                }
+                // Agrega casos para los otros atributos (Fecha de Nacimiento, Promedio, Activo) si es necesario.
+
+                else -> {
+                    println("Opción inválida.")
+                    return
+                }
+            }
+
+            // Actualiza el estudiante en la lista y guarda la lista actualizada en el archivo.
+            val index = estudiantes.indexOfFirst { it.codigoEstudiante == codigo }
+            if (index != -1) {
+                estudiantes[index] = estudianteAActualizar
+                guardarEstudiantes(estudiantes)
+                println("Estudiante actualizado con éxito.")
+            } else {
+                println("Error al actualizar el estudiante.")
+            }
         } else {
             println("No se encontró un estudiante con ese código.")
         }
     }
+
+
 
     fun eliminarEstudiantePorCodigo(codigoEstudiante: Int) {
         val estudiantes = cargarEstudiantes()

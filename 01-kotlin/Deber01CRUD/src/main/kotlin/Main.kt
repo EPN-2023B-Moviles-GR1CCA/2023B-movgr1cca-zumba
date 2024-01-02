@@ -68,39 +68,14 @@ fun main() {
                             estudianteCRUD.buscarEstudiantePorNombre(nombreBusqueda)
                         }
 
+
                         4 -> {
                             println("Ingrese el código del estudiante a actualizar:")
                             val codigo = scanner.nextInt()
                             scanner.nextLine() // Consumir el salto de línea pendiente
-
-                            val estudiantes = estudianteCRUD.cargarEstudiantes()
-                            val estudianteAActualizar = estudiantes.find { it.codigoEstudiante == codigo }
-
-                            if (estudianteAActualizar != null) {
-                                println("Ingrese el nuevo nombre del estudiante:")
-                                val nuevoNombre = scanner.nextLine()
-                                println("Ingrese la nueva fecha de nacimiento (dd/MM/yyyy):")
-                                val nuevaFechaNacimientoStr = scanner.nextLine()
-                                val nuevaFechaNacimiento = formatoFecha.parse(nuevaFechaNacimientoStr)
-                                println("Ingrese el nuevo promedio del estudiante:")
-                                val nuevoPromedio = scanner.nextDouble()
-                                scanner.nextLine() // Consumir el salto de línea pendiente
-                                println("El estudiante está activo? (true/false):")
-                                val nuevoActivo = scanner.nextBoolean()
-
-                                val nuevoEstudiante = Estudiante(
-                                    codigo,
-                                    nuevoNombre,
-                                    nuevaFechaNacimiento,
-                                    nuevoPromedio,
-                                    nuevoActivo
-                                )
-
-                                estudianteCRUD.actualizarEstudiantePorCodigo(codigo, nuevoEstudiante)
-                            } else {
-                                println("No se encontró un estudiante con ese código.")
-                            }
+                            estudianteCRUD.actualizarEstudiantePorCodigo(codigo)
                         }
+
                         5 -> {
                             println("Ingrese el código del estudiante a eliminar:")
                             val codigo = scanner.nextInt()
@@ -169,38 +144,10 @@ fun main() {
                             println("Ingrese el código de la materia a actualizar:")
                             val codigo = scanner.nextInt()
                             scanner.nextLine() // Consumir el salto de línea pendiente
-
-                            val materias = materiaCRUD.cargarMaterias()
-                            val materiaAActualizar = materias.find { it.codigoMateria == codigo }
-
-                            if (materiaAActualizar != null) {
-                                println("Ingrese el nuevo nombre de la materia:")
-                                val nuevoNombreMateria = scanner.nextLine()
-
-                                println("Ingrese la nueva cantidad de créditos de la materia:")
-                                val nuevosCreditos = scanner.nextInt()
-                                scanner.nextLine() // Consumir el salto de línea pendiente
-
-                                println("Ingrese el nuevo costo de la materia:")
-                                val nuevoCosto = scanner.nextDouble()
-                                scanner.nextLine() // Consumir el salto de línea pendiente
-
-                                println("La materia es obligatoria? (True/False1):")
-                                val nuevaEsObligatoria = scanner.nextBoolean()
-
-                                val nuevaMateria = Materia(
-                                    codigo,
-                                    nuevoNombreMateria,
-                                    nuevosCreditos,
-                                    nuevoCosto,
-                                    nuevaEsObligatoria
-                                )
-
-                                materiaCRUD.actualizarMateriaPorCodigo(codigo, nuevaMateria)
-                            } else {
-                                println("No se encontró una materia con ese código.")
-                            }
+                            materiaCRUD.actualizarMateriaPorCodigo(codigo)
                         }
+
+
                         5 -> {
                             println("Ingrese el código de la materia a eliminar:")
                             val codigo = scanner.nextInt()

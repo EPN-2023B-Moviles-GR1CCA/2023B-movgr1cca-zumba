@@ -2,6 +2,7 @@ package CRUD
 
 import Entidades.Materia
 import java.io.File
+import java.util.*
 
 class CrudMateria {
 
@@ -56,18 +57,64 @@ class CrudMateria {
 
 
 
-    fun actualizarMateriaPorCodigo(codigo: Int, nuevaMateria: Materia) {
-        val materias = cargarMaterias()
-        val index = materias.indexOfFirst { it.codigoMateria == codigo }
 
-        if (index != -1) {
-            materias[index] = nuevaMateria
-            guardarMaterias(materias)
-            println("Materia actualizada con éxito.")
-        } else {
-            println("No se encontró una materia con ese código.")
-        }
-    }
+   fun actualizarMateriaPorCodigo(codigo: Int) {
+       val materias = cargarMaterias()
+       val materiaAActualizar = materias.find { it.codigoMateria == codigo }
+       val scanner = Scanner(System.`in`)
+
+       if (materiaAActualizar != null) {
+           println("Materia encontrada:")
+           println("Código: ${materiaAActualizar.codigoMateria}, Nombre: ${materiaAActualizar.nombreMateria}," +
+                   " Créditos: ${materiaAActualizar.creditos}, Costo: ${materiaAActualizar.costo}, Obligatoria: ${materiaAActualizar.esObligatoria}")
+
+           println("Seleccione el número del atributo que desea actualizar:")
+           println("1. Nombre")
+           println("2. Créditos")
+           println("3. Costo")
+           println("4. Obligatoria")
+
+           when (scanner.nextInt()) {
+               1 -> {
+                   println("Ingrese el nuevo nombre de la materia:")
+                   val nuevoNombre = scanner.next()
+                   materiaAActualizar.nombreMateria = nuevoNombre
+               }
+               2 -> {
+                   println("Ingrese la nueva cantidad de créditos de la materia:")
+                   val nuevosCreditos = scanner.nextInt()
+                   materiaAActualizar.creditos = nuevosCreditos
+               }
+               3 -> {
+                   println("Ingrese el nuevo costo de la materia:")
+                   val nuevoCosto = scanner.nextDouble()
+                   materiaAActualizar.costo = nuevoCosto
+               }
+               4 -> {
+                   println("La materia es obligatoria? (true/false):")
+                   val nuevaEsObligatoria = scanner.nextBoolean()
+                   materiaAActualizar.esObligatoria = nuevaEsObligatoria
+               }
+               else -> {
+                   println("Opción inválida.")
+                   return
+               }
+           }
+
+           // Actualiza la materia en la lista y guarda la lista actualizada en el archivo.
+           val index = materias.indexOfFirst { it.codigoMateria == codigo }
+           if (index != -1) {
+               materias[index] = materiaAActualizar
+               guardarMaterias(materias)
+               println("Materia actualizada con éxito.")
+           } else {
+               println("Error al actualizar la materia.")
+           }
+       } else {
+           println("No se encontró una materia con ese código.")
+       }
+   }
+
 
 
 
