@@ -1,4 +1,4 @@
-/*package com.example.rzexamen1
+package com.example.rzexamen1
 
 import android.content.ContentValues
 import android.content.Context
@@ -25,7 +25,7 @@ class Estudiante(
 
         // Métodos set
 
-      /* fun setcodigoEstudiante(codigoEstudiante: Int) {
+       fun setcodigoEstudiante(codigoEstudiante: Int) {
             this.codigoEstudiante = codigoEstudiante
         }
 
@@ -65,7 +65,7 @@ class Estudiante(
 
         fun getactivo(): String {
             return activo
-        }*/
+        }
 
 // Funcion  Insertar
 
@@ -170,100 +170,5 @@ fun getEstudianteById(id: Int): Estudiante {
                     "activo: ${activo}"
 
         return salida
-    }
-}*/
-package com.example.rzexamen1
-
-import android.content.ContentValues
-import android.content.Context
-import android.database.Cursor
-import android.database.sqlite.SQLiteDatabase
-
-class Estudiante(
-    var codigoEstudiante: Int?,
-    var nombreEstudiante: String?,
-    var fechaNacimiento: String?,
-    var promedio: String,
-    var activo: String,
-    val context: Context?
-) {
-
-    // Métodos set
-
-    // Funcion Insertar
-    fun insertEstudiante(): Long {
-        val dbHelper: BaseDatos = BaseDatos(context)
-        val db: SQLiteDatabase = dbHelper.writableDatabase
-        val values: ContentValues = ContentValues()
-
-        values.put("codigoEstudiante", codigoEstudiante)
-        values.put("nombreEstudiante", nombreEstudiante)
-        values.put("fechaNacimiento", fechaNacimiento)
-        values.put("promedio", promedio)
-        values.put("activo", activo)
-
-        return db.insert("t_estudiante", null, values)
-    }
-
-    // Funcion Mostrar
-    fun showEstudiantes(): ArrayList<Estudiante> {
-        val dbHelper: BaseDatos = BaseDatos(context)
-        val db: SQLiteDatabase = dbHelper.writableDatabase
-
-        var lista = ArrayList<Estudiante>()
-        var estudiante: Estudiante
-        var cursor: Cursor? = null
-
-        cursor = db.rawQuery("SELECT * FROM t_estudiante", null)
-
-        if (cursor.moveToFirst()) {
-            do {
-                estudiante = Estudiante(
-                    cursor.getInt(0),
-                    cursor.getString(1),
-                    cursor.getString(2),
-                    cursor.getString(3),
-                    cursor.getString(4),
-                    context
-                )
-                lista.add(estudiante)
-            } while (cursor.moveToNext())
-        }
-
-        cursor.close()
-        return lista
-    }
-
-    // Funcion Update
-    fun updateEstudiante(): Int {
-        val dbHelper: BaseDatos = BaseDatos(context)
-        val db: SQLiteDatabase = dbHelper.writableDatabase
-        val values: ContentValues = ContentValues()
-
-        values.put("nombreEstudiante", nombreEstudiante)
-        values.put("fechaNacimiento", fechaNacimiento)
-        values.put("promedio", promedio)
-        values.put("activo", activo)
-
-        return db.update("t_estudiante", values, "codigoEstudiante=$codigoEstudiante", null)
-    }
-
-    // Funcion Delete
-    fun deleteEstudiante(id: Int): Int {
-        val dbHelper: BaseDatos = BaseDatos(context)
-        val db: SQLiteDatabase = dbHelper.writableDatabase
-
-        return db.delete("t_estudiante", "codigoEstudiante=$id", null)
-    }
-
-    // Sobreescribir la funcion
-    override fun toString(): String {
-        return """
-            Código Estudiante: $codigoEstudiante
-            Nombre: $nombreEstudiante
-            Fecha de Nacimiento: $fechaNacimiento
-            Promedio: $promedio
-            Activo: $activo
-        """.trimIndent()
     }
 }

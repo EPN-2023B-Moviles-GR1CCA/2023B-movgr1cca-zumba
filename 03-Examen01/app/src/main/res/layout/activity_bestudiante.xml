@@ -11,12 +11,16 @@
         android:id="@+id/editTextText_NombreEs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="592dp"
         android:ems="10"
         android:inputType="text"
         android:text="Nombre"
         android:textColor="#FFFFFF"
-        tools:layout_editor_absoluteX="100dp"
-        tools:layout_editor_absoluteY="102dp" />
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textView_Estudiante"
+        app:layout_constraintStart_toStartOf="@+id/textView_Estudiante"
+        app:layout_constraintTop_toBottomOf="@+id/textView_Estudiante"
+        app:layout_constraintVertical_bias="1.0" />
 
     <EditText
         android:id="@+id/editTextText_FechaNacimiento"
@@ -41,8 +45,9 @@
         android:text="Activo"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="@+id/editTexPromedio"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/editTexPromedio"
-        tools:layout_editor_absoluteY="315dp" />
+        tools:layout_editor_absoluteY="343dp" />
 
     <TextView
         android:id="@+id/textView_Estudiante"
@@ -53,11 +58,11 @@
         android:textAlignment="center"
         android:textColor="#000000"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/editTextText_NombreEs"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.096" />
+        app:layout_constraintVertical_bias="0.023" />
 
     <ListView
         android:id="@+id/lvView_Estudiante"
@@ -65,20 +70,22 @@
         android:layout_height="162dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.444"
+        app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btnCrearEstudiante"
-        app:layout_constraintVertical_bias="0.156" />
+        app:layout_constraintVertical_bias="0.597" />
 
     <Button
         android:id="@+id/btnCrearEstudiante"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
         android:text="Crear"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/editTextText_Activo"
+        app:layout_constraintHorizontal_bias="0.598"
         app:layout_constraintStart_toStartOf="@+id/editTextText_Activo"
-        app:layout_constraintTop_toBottomOf="@+id/editTextText_Activo" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.62" />
 
     <EditText
         android:id="@+id/editTexPromedio"
@@ -88,7 +95,8 @@
         android:inputType="numberDecimal"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="@+id/editTextText_FechaNacimiento"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/editTextText_FechaNacimiento"
-        tools:layout_editor_absoluteY="256dp"
+        tools:layout_editor_absoluteY="254dp"
         tools:text="Promedio" />
 </androidx.constraintlayout.widget.ConstraintLayout>

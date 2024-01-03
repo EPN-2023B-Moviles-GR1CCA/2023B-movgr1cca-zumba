@@ -15,6 +15,7 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 
+@Suppress("UNREACHABLE_CODE")
 class BEstudiante : AppCompatActivity() {
 
 
@@ -114,18 +115,22 @@ val  resultado = padre.insertEstudiante()
 
     //Tener selecionada la opcion para que se muestre las opciones
     override fun onContextItemSelected(item: MenuItem): Boolean {
-        return  when(item.itemId){
-   R.id.mi_editarestudiante->{
+        return  when (item.itemId){
+       R.id.mi_editarestudiante -> {
+       irActividad(ActualizarEstudiante::class.java)
+           return true
    }
-            R.id.mi_eliminarestudiante->{
 
-            }
+           /* R.id.mi_eliminarestudiante->{
 
-       R.id.mi_vermaterias->{
+            }*/
 
-       }else-> super.onContextItemSelected(item)
+       /*R.id.mi_vermaterias->{
+
+       }*/else-> super.onContextItemSelected(item)
 
         }
+
     }
 
 
@@ -155,14 +160,12 @@ val  resultado = padre.insertEstudiante()
         val dialogo = builder.create()
         dialogo.show()
     }
-
-    // Esta funcion nos permite
- fun irActividad(
-     clase: Class<*>
- ){
-     val intent = Intent(this, clase)
-     startActivities(intent)
- }
-
+        fun irActividad(
+            clase: Class<*>
+        ) {
+            val intent = Intent(this, clase)
+            startActivity(intent)
+        }
 
 }
+
