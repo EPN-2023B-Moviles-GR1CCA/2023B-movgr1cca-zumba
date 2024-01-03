@@ -10,9 +10,9 @@ import android.database.sqlite.SQLiteDatabase
 class Materia(
     var codigoMateria: Int?,
     var nombreMateria: String?,
-    var creditos: Double?,
-    var costo: Double,
-    var esObligatorio: Boolean, var codigoEstudiante: Int,
+    var creditos: String?,
+    var costo: String?,
+    var esObligatorio: String?, var codigoEstudiante: Int,
     val context: Context?) {
 
 
@@ -29,7 +29,7 @@ class Materia(
 
     //Metodos set
 
-/*fun setcodigoMateria(codigoMateria: Int){
+fun setcodigoMateria(codigoMateria: Int){
     this.codigoMateria = codigoMateria
 }
 
@@ -38,18 +38,21 @@ class Materia(
     }
 
 
-    fun setCreditos(creditos: Double){
+    fun setCreditos(creditos: String){
         this.creditos = creditos
     }
 
-    fun setCosto(costo: Double){
+    fun setCosto(costo: String){
         this.costo = costo
     }
 
-    fun setesObligatorio(esObligatorio: Boolean){
+    fun setesObligatorio(esObligatorio: String){
         this.esObligatorio = esObligatorio
     }
 
+    fun setcodigoEstudiante(codigoEstudiante: Int){
+        this.codigoEstudiante = codigoEstudiante
+    }
 
   //Metodo get
 
@@ -64,15 +67,15 @@ class Materia(
     }
 
 
-    fun getcosto(): Double{
+    fun getCosto(): String?{
         return costo
     }
 
-    fun getcreditos(): Double? {
+    fun getcreditos(): String? {
         return creditos
     }
 
-    fun getesObligatorio(): Boolean{
+    fun getesObligatorio(): String?{
         return esObligatorio
     }
 
@@ -87,9 +90,10 @@ class Materia(
        values.put("creditos", this.creditos)
        values.put("costo", this.costo)
        values.put("esObligatoro", this.esObligatorio)
+       values.put("IDestudiante",this.codigoEstudiante)
 
        return db.insert("t_materia", null,values)
-    }*/
+    }
 
     //Funcion
 
@@ -106,15 +110,14 @@ class Materia(
 
         if (cursorMateria.moveToFirst()) {
             do {
-                materia = Materia(null, "", 0.0, 0.0, true, 0, null)
+                materia = Materia(null, "", "", "", "", 0, null)
 
-                materia.codigoMateria = cursorMateria.getInt(0)
-                materia.nombreMateria = cursorMateria.getString(1)
-                materia.creditos = cursorMateria.getDouble(2)
-                materia.costo = cursorMateria.getDouble(3)
-                materia.esObligatorio = cursorMateria.getInt(4) == 1
-                materia.codigoEstudiante = cursorMateria.getInt(5)
-
+                materia.setcodigoMateria(cursorMateria.getString(0).toInt())
+             materia.setnombreMateria(cursorMateria.getString(1))
+                materia.setCreditos(cursorMateria.getString(2))
+                materia.setCosto(cursorMateria.getString(3))
+                materia.setesObligatorio(cursorMateria.getString(4))
+                materia.setcodigoEstudiante(cursorMateria.getString(5).toInt())
                 listaMaterias.add(materia)
             } while (cursorMateria.moveToNext())
         }
@@ -136,12 +139,13 @@ class Materia(
 
         if (cursor.moveToFirst()) {
             do {
-                materia.codigoMateria = cursor.getInt(0)
-                materia.nombreMateria = cursor.getString(1)
-                materia.creditos = cursor.getDouble(2)
-                materia.costo = cursor.getDouble(3)
-                materia.esObligatorio = cursor.getInt(4) == 1
-                materia.codigoEstudiante = cursor.getInt(5)
+                materia.setcodigoMateria(cursor.getString(0).toInt())
+                materia.setnombreMateria(cursor.getString(1))
+                materia.setCreditos(cursor.getString(2))
+                materia.setCosto(cursor.getString(3))
+                materia.setesObligatorio(cursor.getString(4))
+                materia.setcodigoEstudiante(cursor.getString(5).toInt())
+
             } while (cursor.moveToNext())
         }
 

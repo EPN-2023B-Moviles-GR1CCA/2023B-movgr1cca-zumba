@@ -8,4 +8,8 @@ class ActualizarMateria : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_actualizar_materia)
     }
+
+    //Limpiar las cajas de texto
+
+
 }

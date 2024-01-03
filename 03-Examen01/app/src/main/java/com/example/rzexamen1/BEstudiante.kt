@@ -80,14 +80,14 @@ val  resultado = padre.insertEstudiante()
     }
 
     //Llenar los campos del menu
-    fun showListViewAlbum() {
+    fun showListViewEstudiante() {
         // ListView Canciones
-        val album = Estudiante(null, "", "", "", "", this)
+        val estudiante = Estudiante(null, "", "", "", "", this)
         val listView = findViewById<ListView>(R.id.lvView_Estudiante)
         val adaptador = ArrayAdapter(
             this,
             android.R.layout.simple_list_item_1,
-            album.showEstudiantes()
+            estudiante.showEstudiantes()
         )
         listView.adapter = adaptador
         adaptador.notifyDataSetChanged()
@@ -146,7 +146,7 @@ val  resultado = padre.insertEstudiante()
                 val resultado = padre.deleteEstudiante(idSeleccionado)
                 if (resultado > 0) {
                     Toast.makeText(this, "REGISTRO ELIMINADO", Toast.LENGTH_LONG).show()
-                    showListViewAlbum()
+                    showListViewEstudiante()
                 } else {
                     Toast.makeText(this, "ERROR AL ELIMINAR REGISTRO", Toast.LENGTH_LONG).show()
                 }

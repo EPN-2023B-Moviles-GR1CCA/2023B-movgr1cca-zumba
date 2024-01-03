@@ -54,9 +54,6 @@ class ActualizarEstudiante : AppCompatActivity() {
     }
 
 
-
-
-
     //Limpiar los campos
     fun cleanEditText(){
         val nombre = findViewById<EditText>(R.id.editTextText_NombreEs)
