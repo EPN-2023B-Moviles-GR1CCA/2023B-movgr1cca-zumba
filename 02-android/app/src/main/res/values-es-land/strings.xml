@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="saludo">  Hello Rachel estoy en land </string>
-    <color name="color_fondo">#934228</color>
-    <color name="color_texto">#131313</color>
-</resources>
