@@ -47,35 +47,7 @@ class BMateria : AppCompatActivity() {
             } else {
                 Toast.makeText(this, "ERROR AL INSERTAR REGISTRO", Toast.LENGTH_LONG).show()
             }
-           /* val codigoEsText = codigoEs.text.toString()
 
-            if (codigoEsText.isNotEmpty()) {
-                try {
-                    val codigoEsInt = codigoEsText.toInt()
-                    // Ahora puedes usar codigoEsInt según sea necesario
-                    val materia: Materia = Materia(
-                        null,
-                        nombre.text.toString(),
-                        creditos.text.toString(),
-                        costo.text.toString(),
-                        obligatorio.text.toString(),
-                        codigoEsInt,
-                        this
-                    )
-                    val resultado = materia.InsertarMateria()
-
-                    if (resultado > 0) {
-                        Toast.makeText(this, "REGISTRO GUARDADO", Toast.LENGTH_LONG).show()
-                        cleanEditText()
-                    } else {
-                        Toast.makeText(this, "ERROR AL INSERTAR REGISTRO", Toast.LENGTH_LONG).show()
-                    }
-                } catch (e: NumberFormatException) {
-                    Toast.makeText(this, "El campo Código Estudiante debe ser un número válido", Toast.LENGTH_LONG).show()
-                }
-            } else {
-                Toast.makeText(this, "El campo Código Estudiante no puede estar vacío", Toast.LENGTH_LONG).show()
-            }*/
 
         }
     }

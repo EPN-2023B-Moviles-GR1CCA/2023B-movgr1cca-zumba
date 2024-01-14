@@ -24,8 +24,6 @@ class BEstudiante : AppCompatActivity() {
     }
 
 
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         // Aqui vamos a escuchar la actividad
@@ -111,70 +109,6 @@ val  resultado = padre.insertEstudiante()
     }
 
 
-
-
-    /* fun abrirDialogo() {
-         val builder = AlertDialog.Builder(this)
-         builder.setTitle("¿Desea eliminar este estudiante?")
-
-         builder.setPositiveButton("SI") { dialog, which ->
-             // Verificar que idSeleccionado sea válido antes de intentar eliminar
-             if (idSeleccionado >= 0) {
-                 val padre = Estudiante(null, "", "", "", "", this)
-                 val resultado = padre.deleteEstudiante(idSeleccionado)
-
-                 if (resultado > 0) {
-                     Toast.makeText(this, "REGISTRO ELIMINADO", Toast.LENGTH_LONG).show()
-                     runOnUiThread {
-                         showListViewEstudiante()
-                     }
-                 } else {
-                     Toast.makeText(this, "ERROR AL ELIMINAR REGISTRO", Toast.LENGTH_LONG).show()
-                 }
-             } else {
-                 // Manejar el caso en que idSeleccionado no es válido
-                 Toast.makeText(this, "Selección no válida", Toast.LENGTH_LONG).show()
-             }
-         }
-
-         builder.setNegativeButton("NO") { dialog, which ->
-             // Manejar el caso en que el usuario selecciona "NO"
-             Toast.makeText(this, "Operación cancelada", Toast.LENGTH_LONG).show()
-         }
-
-         val dialogo = builder.create()
-         dialogo.show()
-     }*/
-
-
-
-//Abrir dialogo
-
-  /* fun abrirDialogo() {
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("¿Desea eliminar este estudiante?")
-        builder.setPositiveButton(
-            "SI",
-            DialogInterface.OnClickListener { dialog, which ->
-                val padre = Estudiante(null, "", "", "", "", this)
-                val resultado = padre.deleteEstudiante(idSeleccionado)
-                if (resultado > 0) {
-                    Toast.makeText(this, "REGISTRO ELIMINADO", Toast.LENGTH_LONG).show()
-                    showListViewEstudiante()
-                } else {
-                    Toast.makeText(this, "ERROR AL ELIMINAR REGISTRO", Toast.LENGTH_LONG).show()
-                }
-            }
-        )
-        builder.setNegativeButton(
-            "NO",
-            null
-        )
-
-        val dialogo = builder.create()
-        dialogo.show()
-    }*/
-
   fun abrirDialogo() {
         val builder = AlertDialog.Builder(this)
         builder.setTitle("¿Desea eliminar este estudiante?")
@@ -208,7 +142,7 @@ val  resultado = padre.insertEstudiante()
         dialogo.show()
     }
     fun showListViewEstudiante() {
-        // ListView Canciones
+        // ListView
         val estudiante = Estudiante(null, "", "", "", "", this)
         val listView = findViewById<ListView>(R.id.lvView_Estudiante)
         val adaptador = ArrayAdapter(

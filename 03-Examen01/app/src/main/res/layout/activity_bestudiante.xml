@@ -11,13 +11,13 @@
         android:id="@+id/editTextText_NombreEs"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="36dp"
         android:ems="10"
         android:hint="Nombre"
         android:inputType="text"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="@+id/textView_Estudiante"
-        app:layout_constraintHorizontal_bias="0.518"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/textView_Estudiante"
         app:layout_constraintTop_toBottomOf="@+id/textView_Estudiante" />
 
