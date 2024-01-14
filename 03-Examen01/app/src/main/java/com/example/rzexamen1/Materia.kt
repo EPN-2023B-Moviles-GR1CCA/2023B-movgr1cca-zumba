@@ -6,13 +6,14 @@ import android.content.Context
 
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
+import android.util.Log
 
 class Materia(
     var codigoMateria: Int?,
     var nombreMateria: String?,
     var creditos: String?,
     var costo: String?,
-    var esObligatorio: String?, var codigoEstudiante: Int,
+    var esObligatorio: String?, var CodigoEstudiante: Int,
     val context: Context?) {
 
 
@@ -23,7 +24,7 @@ class Materia(
         creditos
         costo
         esObligatorio
-        codigoEstudiante
+        CodigoEstudiante
         context
     }
 
@@ -38,11 +39,11 @@ fun setcodigoMateria(codigoMateria: Int){
     }
 
 
-    fun setCreditos(creditos: String){
+    fun setcreditos(creditos: String): Unit{
         this.creditos = creditos
     }
 
-    fun setCosto(costo: String){
+    fun setcosto(costo: String){
         this.costo = costo
     }
 
@@ -51,7 +52,7 @@ fun setcodigoMateria(codigoMateria: Int){
     }
 
     fun setcodigoEstudiante(codigoEstudiante: Int){
-        this.codigoEstudiante = codigoEstudiante
+        this.CodigoEstudiante = codigoEstudiante
     }
 
   //Metodo get
@@ -61,13 +62,17 @@ fun setcodigoMateria(codigoMateria: Int){
       return  codigoMateria
   }
 
+     fun getcodigoEstudiante(): Int{
+         return CodigoEstudiante
+     }
+
 
     fun getnombreMateria(): String? {
         return nombreMateria
     }
 
 
-    fun getCosto(): String?{
+    fun getcosto(): String?{
         return costo
     }
 
@@ -84,21 +89,23 @@ fun setcodigoMateria(codigoMateria: Int){
     fun InsertarMateria(): Long{
        val dbHelper: BaseDatos = BaseDatos(this.context)
        val db: SQLiteDatabase = dbHelper.writableDatabase
+
        val values: ContentValues = ContentValues()
 
        values.put("nombreMateria", this.nombreMateria)
        values.put("creditos", this.creditos)
        values.put("costo", this.costo)
-       values.put("esObligatoro", this.esObligatorio)
-       values.put("IDestudiante",this.codigoEstudiante)
+       values.put("esObligatorio", this.esObligatorio)
+       values.put("CodigoEstudiante", this.CodigoEstudiante)
+
 
        return db.insert("t_materia", null,values)
     }
 
-    //Funcion
+    //Funcion verdadera
 
 
-    fun mostrarEstudiante(codigoEstudiante: Int): ArrayList<Materia> {
+    fun mostrarMateria(id: Int): ArrayList<Materia> {
         val dbHelper: BaseDatos = BaseDatos(this.context)
         val db: SQLiteDatabase = dbHelper.writableDatabase
 
@@ -106,7 +113,7 @@ fun setcodigoMateria(codigoMateria: Int){
         var materia: Materia
         var cursorMateria: Cursor? = null
 
-        cursorMateria = db.rawQuery("SELECT * FROM t_materias WHERE codigoEstudiante=$codigoEstudiante", null)
+        cursorMateria = db.rawQuery("SELECT * FROM t_materia WHERE codigoMateria = ${id+1}", null)
 
         if (cursorMateria.moveToFirst()) {
             do {
@@ -114,8 +121,8 @@ fun setcodigoMateria(codigoMateria: Int){
 
                 materia.setcodigoMateria(cursorMateria.getString(0).toInt())
              materia.setnombreMateria(cursorMateria.getString(1))
-                materia.setCreditos(cursorMateria.getString(2))
-                materia.setCosto(cursorMateria.getString(3))
+                materia.setcreditos(cursorMateria.getString(2))
+                materia.setcosto(cursorMateria.getString(3))
                 materia.setesObligatorio(cursorMateria.getString(4))
                 materia.setcodigoEstudiante(cursorMateria.getString(5).toInt())
                 listaMaterias.add(materia)
@@ -126,23 +133,24 @@ fun setcodigoMateria(codigoMateria: Int){
         return listaMaterias
     }
 
-    //
+
+    //Verdadera
 
     fun getMateriaById(id: Int): Materia {
         val dbHelper: BaseDatos = BaseDatos(this.context)
         val db: SQLiteDatabase = dbHelper.writableDatabase
 
-        var materia = Materia(null, "", 0.0, 0.0, false,0, this.context)
+        var materia = Materia(null, "", "", "", "",0, this.context)
         var cursor: Cursor? = null
 
-        cursor = db.rawQuery("SELECT * FROM t_materias WHERE idMateria = ${id + 1}", null)
+        cursor = db.rawQuery("SELECT * FROM t_materia WHERE codigoMateria = ${id+1}", null)
 
         if (cursor.moveToFirst()) {
             do {
                 materia.setcodigoMateria(cursor.getString(0).toInt())
                 materia.setnombreMateria(cursor.getString(1))
-                materia.setCreditos(cursor.getString(2))
-                materia.setCosto(cursor.getString(3))
+                materia.setcreditos(cursor.getString(2))
+                materia.setcosto(cursor.getString(3))
                 materia.setesObligatorio(cursor.getString(4))
                 materia.setcodigoEstudiante(cursor.getString(5).toInt())
 
@@ -152,13 +160,20 @@ fun setcodigoMateria(codigoMateria: Int){
         cursor.close()
         return materia
     }
+
+
+
     //Funcion Eliminar
 
     fun deleteMateria(id: Int): Int {
         val dbHelper: BaseDatos = BaseDatos(this.context)
         val db: SQLiteDatabase = dbHelper.writableDatabase
+//Original
+        //return db.delete("t_materia", "codigoMateria"+ (id+1), null)
+     //   return db.delete("t_materia", "codigoMateria=" + (id + 1), null)
 
-        return db.delete("t_materia", "codigoMateria"+ (id+1), null)
+        return db.delete("t_materia", "codigoMateria=?", arrayOf((id + 1).toString()))
+
     }
 
     //Funcion Update
@@ -170,24 +185,22 @@ fun setcodigoMateria(codigoMateria: Int){
         values.put("nombreMateria", this.nombreMateria)
         values.put("creditos", this.creditos)
         values.put("costo", this.costo)
-        values.put("esObligatoro", this.esObligatorio)
-        values.put("CODESTUDIANTE", this.codigoEstudiante)
+        values.put("esObligatorio", this.esObligatorio)
+        values.put("CodigoEstudiante", this.CodigoEstudiante)
         return db.update("t_materia", values, "codigoMateria="+this.codigoMateria, null)
     }
-
-
 
 
 //Metodo toString
 
     override fun toString(): String {
         val salida=
-        "codigoMateria:${codigoMateria}\n" +
-                "nombreMateria: ${nombreMateria}\n" +
-                " creditos: ${creditos}\n " +
-                "costo=${costo}\n" +
-                " esObligatorio=${esObligatorio}"+
-                "codigoEstudiante = ${codigoEstudiante}"
+        "Codigo: ${codigoMateria}\n" +
+                "Nombre Materia: ${nombreMateria}\n" +
+                "Creditos: ${creditos}\n " +
+                "Costo: ${costo}\n" +
+                "Es obligatorio: ${esObligatorio} \n"+
+                "Codigo Estudiante: ${CodigoEstudiante}"
 
         return salida
     }

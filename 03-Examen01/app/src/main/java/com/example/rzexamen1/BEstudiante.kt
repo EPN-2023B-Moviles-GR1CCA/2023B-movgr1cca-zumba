@@ -15,12 +15,12 @@ import android.view.MenuItem
 import android.view.View
 import android.widget.AdapterView
 
-@Suppress("UNREACHABLE_CODE")
+
 class BEstudiante : AppCompatActivity() {
 
 
     companion object{
-        var idSeleccionado = 0
+        var idSeleccionado = 0 
     }
 
 
@@ -30,6 +30,8 @@ class BEstudiante : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         // Aqui vamos a escuchar la actividad
         setContentView(R.layout.activity_bestudiante)
+        //Actualiza el menu
+        showListViewEstudiante()
 
         //Declaramos la variable  y llamamos a  al boton para luego escuchar la actividad
         val nombre = findViewById<EditText>(R.id.editTextText_NombreEs)
@@ -54,6 +56,7 @@ val  resultado = padre.insertEstudiante()
 
                 Toast.makeText(this,"Registro Guardado", Toast.LENGTH_LONG).show()
                 cleanEditText()
+                showListViewEstudiante()
 
             }else{
                 Toast.makeText(this,"Error ", Toast.LENGTH_LONG).show()
@@ -63,36 +66,8 @@ val  resultado = padre.insertEstudiante()
 
     }
 
-    //Limpiar los campos del texto
-    fun cleanEditText(){
-        val nombre = findViewById<EditText>(R.id.editTextText_NombreEs)
-        val fechaNacimiento = findViewById<EditText>(R.id.editTextText_FechaNacimiento)
-        val promedio = findViewById<EditText>(R.id.editTexPromedio)
-        val activo = findViewById<EditText>(R.id.editTextText_Activo)
 
-        nombre.text.clear()
-        fechaNacimiento.text.clear()
-        promedio.text.clear()
-        activo.text.clear()
 
-        //Esto hace que el cursor se ponga en  la primer input
-        nombre.requestFocus()
-    }
-
-    //Llenar los campos del menu
-    fun showListViewEstudiante() {
-        // ListView Canciones
-        val estudiante = Estudiante(null, "", "", "", "", this)
-        val listView = findViewById<ListView>(R.id.lvView_Estudiante)
-        val adaptador = ArrayAdapter(
-            this,
-            android.R.layout.simple_list_item_1,
-            estudiante.showEstudiantes()
-        )
-        listView.adapter = adaptador
-        adaptador.notifyDataSetChanged()
-        registerForContextMenu(listView)
-    }
 
 
     //Menu contextual
@@ -113,32 +88,71 @@ val  resultado = padre.insertEstudiante()
     }
 
 
+
     //Tener selecionada la opcion para que se muestre las opciones
     override fun onContextItemSelected(item: MenuItem): Boolean {
         return  when (item.itemId){
        R.id.mi_editarestudiante -> {
        irActividad(ActualizarEstudiante::class.java)
            return true
-   }
+   }R.id.mi_eliminarestudiante->{
+                 abrirDialogo()
+                return true
 
-           /* R.id.mi_eliminarestudiante->{
+            }
+            R.id.mi_vermaterias->{
+                irActividad(VerMateria::class.java)
+                return true
 
-            }*/
-
-       /*R.id.mi_vermaterias->{
-
-       }*/else-> super.onContextItemSelected(item)
+       }else-> super.onContextItemSelected(item)
 
         }
 
     }
 
 
+
+
+    /* fun abrirDialogo() {
+         val builder = AlertDialog.Builder(this)
+         builder.setTitle("¿Desea eliminar este estudiante?")
+
+         builder.setPositiveButton("SI") { dialog, which ->
+             // Verificar que idSeleccionado sea válido antes de intentar eliminar
+             if (idSeleccionado >= 0) {
+                 val padre = Estudiante(null, "", "", "", "", this)
+                 val resultado = padre.deleteEstudiante(idSeleccionado)
+
+                 if (resultado > 0) {
+                     Toast.makeText(this, "REGISTRO ELIMINADO", Toast.LENGTH_LONG).show()
+                     runOnUiThread {
+                         showListViewEstudiante()
+                     }
+                 } else {
+                     Toast.makeText(this, "ERROR AL ELIMINAR REGISTRO", Toast.LENGTH_LONG).show()
+                 }
+             } else {
+                 // Manejar el caso en que idSeleccionado no es válido
+                 Toast.makeText(this, "Selección no válida", Toast.LENGTH_LONG).show()
+             }
+         }
+
+         builder.setNegativeButton("NO") { dialog, which ->
+             // Manejar el caso en que el usuario selecciona "NO"
+             Toast.makeText(this, "Operación cancelada", Toast.LENGTH_LONG).show()
+         }
+
+         val dialogo = builder.create()
+         dialogo.show()
+     }*/
+
+
+
 //Abrir dialogo
 
-    fun abrirDialogo() {
+  /* fun abrirDialogo() {
         val builder = AlertDialog.Builder(this)
-        builder.setTitle("¿Desea eliminar este álbum?")
+        builder.setTitle("¿Desea eliminar este estudiante?")
         builder.setPositiveButton(
             "SI",
             DialogInterface.OnClickListener { dialog, which ->
@@ -159,8 +173,72 @@ val  resultado = padre.insertEstudiante()
 
         val dialogo = builder.create()
         dialogo.show()
+    }*/
+
+  fun abrirDialogo() {
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("¿Desea eliminar este estudiante?")
+
+        builder.setPositiveButton("SI") { dialog, which ->
+            // Verificar que idSeleccionado sea válido antes de intentar eliminar
+            if (idSeleccionado >= 0) {val padre = Estudiante(null, "", "", "", "", this)
+                val resultado = padre.deleteEstudiante(idSeleccionado )
+
+                if (resultado > 0) {
+                    Toast.makeText(this, "REGISTRO ELIMINADO", Toast.LENGTH_LONG).show()
+                    runOnUiThread {
+                        showListViewEstudiante()
+                    }
+                } else {
+                    Toast.makeText(this, "ERROR AL ELIMINAR REGISTRO", Toast.LENGTH_LONG).show()
+                }
+
+            } else {
+                // Manejar el caso en que idSeleccionado no es válido
+                Toast.makeText(this, "Selección no válida", Toast.LENGTH_LONG).show()
+            }
+        }
+
+        builder.setNegativeButton("NO") { dialog, which ->
+            // Manejar el caso en que el usuario selecciona "NO"
+            Toast.makeText(this, "Operación cancelada", Toast.LENGTH_LONG).show()
+        }
+
+        val dialogo = builder.create()
+        dialogo.show()
     }
-        fun irActividad(
+    fun showListViewEstudiante() {
+        // ListView Canciones
+        val estudiante = Estudiante(null, "", "", "", "", this)
+        val listView = findViewById<ListView>(R.id.lvView_Estudiante)
+        val adaptador = ArrayAdapter(
+            this,
+            android.R.layout.simple_list_item_1,
+            estudiante.showEstudiantes()
+        )
+        //Actualiza la interfaz del Estudiante
+        //Pero no vale mierda .........
+        listView.adapter = adaptador
+        adaptador.notifyDataSetChanged()
+        registerForContextMenu(listView)
+    }
+
+    fun cleanEditText(){
+        val nombre = findViewById<EditText>(R.id.editTextText_NombreEs)
+        val fechaNacimiento = findViewById<EditText>(R.id.editTextText_FechaNacimiento)
+        val promedio = findViewById<EditText>(R.id.editTexPromedio)
+        val activo = findViewById<EditText>(R.id.editTextText_Activo)
+
+        nombre.text.clear()
+        fechaNacimiento.text.clear()
+        promedio.text.clear()
+        activo.text.clear()
+
+        //Esto hace que el cursor se ponga en  la primer input
+        nombre.requestFocus()
+    }
+
+    fun irActividad(
             clase: Class<*>
         ) {
             val intent = Intent(this, clase)

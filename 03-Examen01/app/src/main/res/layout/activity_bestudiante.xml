@@ -66,8 +66,8 @@
 
     <ListView
         android:id="@+id/lvView_Estudiante"
-        android:layout_width="375dp"
-        android:layout_height="162dp"
+        android:layout_width="358dp"
+        android:layout_height="291dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.444"

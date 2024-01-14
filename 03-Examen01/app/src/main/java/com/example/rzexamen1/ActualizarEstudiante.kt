@@ -1,9 +1,12 @@
 package com.example.rzexamen1
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
+import android.widget.ListView
 import android.widget.Toast
 
 class ActualizarEstudiante : AppCompatActivity() {
@@ -34,8 +37,11 @@ class ActualizarEstudiante : AppCompatActivity() {
         var activo = findViewById<EditText>(R.id.tv_updactivoEs)
         activo.setText(estudiante.getactivo())
 
-        val btnactualizarEstudiante = findViewById<Button>(R.id.btn_updEstudiante)
-        btnactualizarEstudiante.setOnClickListener {
+
+        // Dentro de la actividad ActualizarEstudiante
+        val btnActualizarEstudiante = findViewById<Button>(R.id.btn_updEstudiante)
+
+        btnActualizarEstudiante.setOnClickListener {
             estudiante.setnombreEstudiante(nombre.text.toString())
             estudiante.setfechaNacimiento(fechaNacimiento.text.toString())
             estudiante.setpromedio(promedio.text.toString())
@@ -43,23 +49,30 @@ class ActualizarEstudiante : AppCompatActivity() {
 
             val resultado = estudiante.updateEstudiante()
 
+            // Después de la actualización y obtener los nuevos datos
             if (resultado > 0) {
                 Toast.makeText(this, "REGISTRO ACTUALIZADO", Toast.LENGTH_LONG).show()
+
+                // Limpiar los campos
                 cleanEditText()
+
+                // Llamar a la función showListViewEstudiante en BEstudiante para actualizar la lista
+                val intent = Intent(this, BEstudiante::class.java)
+                startActivity(intent)
             } else {
                 Toast.makeText(this, "ERROR AL ACTUALIZAR REGISTRO", Toast.LENGTH_LONG).show()
             }
-
         }
+
     }
 
 
     //Limpiar los campos
-    fun cleanEditText(){
-        val nombre = findViewById<EditText>(R.id.editTextText_NombreEs)
-        val fechaNacimiento = findViewById<EditText>(R.id.editTextText_FechaNacimiento)
-        val promedio = findViewById<EditText>(R.id.editTexPromedio)
-        val activo = findViewById<EditText>(R.id.editTextText_Activo)
+   private fun cleanEditText(){
+        val nombre = findViewById<EditText>(R.id.tv_updNombreEs)
+        val fechaNacimiento = findViewById<EditText>(R.id.tv_updFechaNEs)
+        val promedio = findViewById<EditText>(R.id.tv_updpromedioEs)
+        val activo = findViewById<EditText>(R.id.tv_updactivoEs)
 
         nombre.text.clear()
         fechaNacimiento.text.clear()

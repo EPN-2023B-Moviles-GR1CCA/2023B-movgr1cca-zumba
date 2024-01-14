@@ -4,6 +4,7 @@ import android.content.ContentValues
 import android.content.Context
 import android.database.Cursor
 import android.database.sqlite.SQLiteDatabase
+import android.util.Log
 
 class Estudiante(
     var codigoEstudiante: Int?,
@@ -83,7 +84,7 @@ class Estudiante(
         return db.insert("t_estudiante", null, values)
     }
 
-//Funcion Mostrar
+ //Funcion Mostrar a los estudiantes
 
     fun showEstudiantes(): ArrayList<Estudiante> {
         val dbHelper: BaseDatos = BaseDatos(this.context)
@@ -99,7 +100,7 @@ class Estudiante(
             do {
                 estudiante = Estudiante(null, "", "", "", "", null)
 
-                estudiante.setcodigoEstudiante(cursor.getInt(0).toInt())
+                estudiante.setcodigoEstudiante(cursor.getString(0).toInt())
                 estudiante.setnombreEstudiante(cursor.getString(1))
                 estudiante.setfechaNacimiento(cursor.getString(2))
                 estudiante.setpromedio(cursor.getString(3))
@@ -112,19 +113,19 @@ class Estudiante(
         return lista
     }
 
-//
+// Obtener  al estudiante con codigo
 fun getEstudianteById(id: Int): Estudiante {
     val dbHelper = BaseDatos(this.context)
     val db: SQLiteDatabase = dbHelper.writableDatabase
 
-    var estudiante = Estudiante(0, "", "", "", "", null)
+    var estudiante = Estudiante(null, "", "", "", "",this.context)
     var cursor: Cursor? = null
 
-    cursor = db.rawQuery("SELECT * FROM t_estudiante WHERE codigoEstudiante = ${id + 1}", null)
+    cursor = db.rawQuery("SELECT * FROM t_estudiante WHERE codigoEstudiante = ${id+1}", null)
 
     if (cursor.moveToFirst()) {
         do {
-            estudiante.setcodigoEstudiante(cursor.getInt(0))
+            estudiante.setcodigoEstudiante(cursor.getString(0).toInt())
             estudiante.setnombreEstudiante(cursor.getString(1))
             estudiante.setfechaNacimiento(cursor.getString(2))
             estudiante.setpromedio(cursor.getString(3))
@@ -137,7 +138,8 @@ fun getEstudianteById(id: Int): Estudiante {
 }
 
 
-//Funcion Update
+
+    //Funcion Update
     fun updateEstudiante(): Int {
         val dbHelper: BaseDatos = BaseDatos(this.context)
         val db: SQLiteDatabase = dbHelper.writableDatabase
@@ -151,23 +153,23 @@ fun getEstudianteById(id: Int): Estudiante {
         return db.update("t_estudiante", values, "codigoEstudiante="+this.codigoEstudiante, null)
     }
 
-    //Funcion Delete
+    //Funcion Delete verdadera
     fun deleteEstudiante(id: Int): Int {
         val dbHelper: BaseDatos = BaseDatos(this.context)
         val db: SQLiteDatabase = dbHelper.writableDatabase
 
-        return db.delete("t_estudiante", "codigoEstudiante=" + (id + 1), null)
+        return db.delete("t_estudiante", "codigoEstudiante="+(id+1), null)
     }
 
     //Sobreescribir la funcion
 
     override fun toString(): String {
         val salida =
-            "codigoEstudiante: ${codigoEstudiante} \n" +
-                    "nombre: ${nombreEstudiante} \n"+
-                    "fechaN: ${fechaNacimiento} \n"+
-                    "promedio: ${promedio}\n"+
-                    "activo: ${activo}"
+            "Codigo: ${codigoEstudiante} \n" +
+                    "Nombre: ${nombreEstudiante} \n"+
+                    "Fecha Nacimiento: ${fechaNacimiento} \n"+
+                    "Promedio: ${promedio}\n"+
+                    "Activo: ${activo}"
 
         return salida
     }
