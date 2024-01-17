@@ -18,7 +18,7 @@ class Materia(
 
 
     //init
-    init{
+    /*init{
         codigoMateria
         nombreMateria
         creditos
@@ -26,7 +26,7 @@ class Materia(
         esObligatorio
         CodigoEstudiante
         context
-    }
+    }*/
 
     //Metodos set
 

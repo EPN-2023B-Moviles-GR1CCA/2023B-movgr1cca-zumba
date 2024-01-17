@@ -15,14 +15,14 @@ class Estudiante(
     val context: Context?
 ) {
 
-    init{
+   /* init{
         codigoEstudiante
         nombreEstudiante
         fechaNacimiento
         promedio
         activo
         context
-    }
+    }*/
 
         // Métodos set
 
