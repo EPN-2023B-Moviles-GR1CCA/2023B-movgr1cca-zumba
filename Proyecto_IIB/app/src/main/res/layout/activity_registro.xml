@@ -6,4 +6,54 @@
     android:layout_height="match_parent"
     tools:context=".RegistroActivity">
 
+    <EditText
+        android:id="@+id/etCorreoRegistro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Correo electrónico"
+        tools:layout_editor_absoluteX="63dp"
+        tools:layout_editor_absoluteY="302dp" />
+
+    <EditText
+        android:id="@+id/etcontraseñaRegistro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Contraseña"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="@+id/etCorreoRegistro"
+        app:layout_constraintStart_toStartOf="@+id/etCorreoRegistro"
+        tools:layout_editor_absoluteY="424dp" />
+
+    <EditText
+        android:id="@+id/etnombreRegistro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Nombre"
+        android:inputType="text"
+        tools:layout_editor_absoluteX="63dp"
+        tools:layout_editor_absoluteY="91dp" />
+
+    <EditText
+        android:id="@+id/etApellidoRegistro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Apellido"
+        android:inputType="text"
+        tools:layout_editor_absoluteX="63dp"
+        tools:layout_editor_absoluteY="195dp" />
+
+    <Button
+        android:id="@+id/btnRegistrar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#76D7C4"
+        android:text="Registrar"
+        android:textSize="24sp"
+        tools:layout_editor_absoluteX="130dp"
+        tools:layout_editor_absoluteY="518dp" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
