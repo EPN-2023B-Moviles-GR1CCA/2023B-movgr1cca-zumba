@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#D587A1"
+    tools:context=".ActualizarEstudiante">
+
+    <EditText
+        android:id="@+id/tv_updCodifoEs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Codigo Estudiante"
+        android:inputType="number"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.193" />
+
+    <EditText
+        android:id="@+id/tv_updNombreEs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="44dp"
+        android:ems="10"
+        android:hint="Nombre"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="@+id/tv_updCodifoEs"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_updCodifoEs"
+        app:layout_constraintTop_toBottomOf="@+id/tv_updCodifoEs" />
+
+    <EditText
+        android:id="@+id/tv_updFechaNEs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:ems="10"
+        android:hint="Fecha Nacimiento"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="@+id/tv_updNombreEs"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_updNombreEs"
+        app:layout_constraintTop_toBottomOf="@+id/tv_updNombreEs" />
+
+    <EditText
+        android:id="@+id/tv_updpromedioEs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="52dp"
+        android:ems="10"
+        android:hint="Promedio"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="@+id/tv_updFechaNEs"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_updFechaNEs"
+        app:layout_constraintTop_toBottomOf="@+id/tv_updFechaNEs" />
+
+    <EditText
+        android:id="@+id/tv_updactivoEs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:ems="10"
+        android:hint="Activo"
+        android:inputType="text"
+        app:layout_constraintEnd_toEndOf="@+id/tv_updpromedioEs"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_updpromedioEs"
+        app:layout_constraintTop_toBottomOf="@+id/tv_updpromedioEs" />
+
+    <Button
+        android:id="@+id/btn_updEstudiante"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="#776868"
+        android:text="Actualizar Estudiante"
+        android:textColor="#171714"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/tv_updactivoEs"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tv_updactivoEs"
+        app:layout_constraintTop_toBottomOf="@+id/tv_updactivoEs"
+        app:layout_constraintVertical_bias="0.256" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="269dp"
+        android:layout_height="55dp"
+        android:background="#FFFFFF"
+        android:text="Actualizar Estudiante"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/tv_updCodifoEs"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.445" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
