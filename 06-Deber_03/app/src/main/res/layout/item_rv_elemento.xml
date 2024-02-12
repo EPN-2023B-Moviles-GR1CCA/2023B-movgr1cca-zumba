@@ -21,8 +21,8 @@
             android:paddingBottom="10dp">
 
             <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="393dp"
-                android:layout_height="55dp"
+                android:layout_width="398dp"
+                android:layout_height="60dp"
                 android:background="#FBFBFB"
                 android:orientation="vertical">
 
