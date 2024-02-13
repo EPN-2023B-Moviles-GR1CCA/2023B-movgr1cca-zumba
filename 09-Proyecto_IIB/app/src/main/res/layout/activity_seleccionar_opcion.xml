@@ -4,8 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SelecionarOpcionRL">
-
+    tools:context=".SeleccionarOpcion">
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
@@ -13,24 +12,24 @@
         android:layout_marginBottom="56dp"
         android:text="Selecciona una opción"
         android:textSize="24sp"
-        app:layout_constraintBottom_toTopOf="@+id/button3"
-        app:layout_constraintEnd_toEndOf="@+id/button3"
+        app:layout_constraintBottom_toTopOf="@+id/btnTengoCuentaLogin"
+        app:layout_constraintEnd_toEndOf="@+id/btnTengoCuentaLogin"
         app:layout_constraintHorizontal_bias="0.505"
-        app:layout_constraintStart_toStartOf="@+id/button3" />
+        app:layout_constraintStart_toStartOf="@+id/btnTengoCuentaLogin" />
 
     <Button
-        android:id="@+id/button3"
+        android:id="@+id/btnTengoCuentaLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="24dp"
         android:text="Ya tengo cuenta"
-        app:layout_constraintBottom_toTopOf="@+id/button4"
-        app:layout_constraintEnd_toEndOf="@+id/button4"
+        app:layout_constraintBottom_toTopOf="@+id/btnRegistrarmeahora"
+        app:layout_constraintEnd_toEndOf="@+id/btnRegistrarmeahora"
         app:layout_constraintHorizontal_bias="0.461"
-        app:layout_constraintStart_toStartOf="@+id/button4" />
+        app:layout_constraintStart_toStartOf="@+id/btnRegistrarmeahora" />
 
     <Button
-        android:id="@+id/button4"
+        android:id="@+id/btnRegistrarmeahora"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Registarme Ahora"
@@ -38,4 +37,6 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>

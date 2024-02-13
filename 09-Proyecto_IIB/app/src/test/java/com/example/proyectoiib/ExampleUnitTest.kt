@@ -1,4 +1,4 @@
-package com.example.activitymain
+package com.example.proyectoiib
 
 import org.junit.Test
 

@@ -4,33 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".LoginActivity">
+    tools:context=".Login">
 
     <Button
-        android:id="@+id/btnIngresar"
+        android:id="@+id/btnIngresarLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
         android:text="Ingresar"
-        tools:layout_editor_absoluteX="122dp"
-        tools:layout_editor_absoluteY="398dp" />
+        app:layout_constraintEnd_toEndOf="@+id/tvcontraseñalogin"
+        app:layout_constraintHorizontal_bias="0.449"
+        app:layout_constraintStart_toStartOf="@+id/tvcontraseñalogin"
+        app:layout_constraintTop_toBottomOf="@+id/tvcontraseñalogin" />
 
     <EditText
-        android:id="@+id/etusuarioLogin"
+        android:id="@+id/tvUsuarioLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="172dp"
         android:ems="10"
         android:hint="Usuario"
         android:inputType="text"
-        tools:layout_editor_absoluteX="76dp"
-        tools:layout_editor_absoluteY="138dp" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.412"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
-        android:id="@+id/etcontraseñalogin"
+        android:id="@+id/tvcontraseñalogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
         android:ems="10"
         android:hint="Contraseña"
         android:inputType="text"
-        tools:layout_editor_absoluteX="82dp"
-        tools:layout_editor_absoluteY="240dp" />
+        app:layout_constraintEnd_toEndOf="@+id/tvUsuarioLogin"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/tvUsuarioLogin"
+        app:layout_constraintTop_toBottomOf="@+id/tvUsuarioLogin" />
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
