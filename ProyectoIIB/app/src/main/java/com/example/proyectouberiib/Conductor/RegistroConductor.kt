@@ -1,4 +1,4 @@
-package com.example.proyectouberiib
+package com.example.proyectouberiib.Conductor
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -6,19 +6,18 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import com.example.proyectouberiib.Conductor.MapaConductor
+import com.example.proyectouberiib.R
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.database.FirebaseDatabase
-import com.google.firebase.firestore.auth.User
 
-class Registro : AppCompatActivity() {
+class RegistroConductor : AppCompatActivity() {
     private lateinit var mAuth: FirebaseAuth
     private lateinit var mDatabase: FirebaseDatabase
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_registro)
+        setContentView(R.layout.activity_registro_conductor)
         // Inicializar Firebase Auth y Firebase Database
-        mAuth = FirebaseAuth.getInstance()
+      /*  mAuth = FirebaseAuth.getInstance()
         mDatabase = FirebaseDatabase.getInstance()
         val mPref = applicationContext.getSharedPreferences("typeUser", MODE_PRIVATE)
 
@@ -28,7 +27,7 @@ class Registro : AppCompatActivity() {
         val etCorreo = findViewById<EditText>(R.id.etCorreoRegistro)
         val etContraseña = findViewById<EditText>(R.id.etcontraseñaRegistro)
 
-       val SelectedUser=  mPref.getString("user", "")
+        val SelectedUser=  mPref.getString("user", "")
         Toast.makeText(this, "fue" +SelectedUser , Toast.LENGTH_SHORT).show()
 
 
@@ -53,7 +52,7 @@ class Registro : AppCompatActivity() {
                         userRef.setValue(user)
                             .addOnCompleteListener { task ->
                                 if (task.isSuccessful) {
-                                   saveUser(nombre, correo)
+                                    saveUser(nombre, correo)
                                     // Si el registro en la base de datos es exitoso, inicia la actividad MapaConductor
                                     //Toast.makeText(this, "Usuario registrado exitosamente", Toast.LENGTH_SHORT).show()
                                     val intent = Intent(this@Registro, MapaConductor::class.java)
@@ -75,6 +74,7 @@ class Registro : AppCompatActivity() {
 
 
     }
+
     fun saveUser(nombre: String, correo: String) {
         val mPref = applicationContext.getSharedPreferences("typeUser", MODE_PRIVATE)
         val selectedUser = mPref.getString("user", "")
@@ -105,12 +105,7 @@ class Registro : AppCompatActivity() {
                     finish()
                 } else {
                     // Hubo un error al guardar la información del usuario en la base de datos
-                    Toast.makeText(this, "Error al guardar la información del usuario en la base de datos", Toast.LENGTH_SHORT).show()
                 }
-            }
+            }*/
     }
-
 }
-
-
-
