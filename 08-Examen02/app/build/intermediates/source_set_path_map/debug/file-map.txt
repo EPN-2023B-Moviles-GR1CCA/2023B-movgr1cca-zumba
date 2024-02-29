@@ -1,0 +1,64 @@
+com.example.rzexamen1.app-res-0 C:\2023 Moviles\RaquelZumba\2023B-movgr1cca-zumba\08-Examen02\app\build\generated\res\processDebugGoogleServices
+com.example.rzexamen1.app-resValues-1 C:\2023 Moviles\RaquelZumba\2023B-movgr1cca-zumba\08-Examen02\app\build\generated\res\resValues\debug
+com.example.rzexamen1.app-packageDebugResources-2 C:\2023 Moviles\RaquelZumba\2023B-movgr1cca-zumba\08-Examen02\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.example.rzexamen1.app-packageDebugResources-3 C:\2023 Moviles\RaquelZumba\2023B-movgr1cca-zumba\08-Examen02\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.example.rzexamen1.app-merged_res-4 C:\2023 Moviles\RaquelZumba\2023B-movgr1cca-zumba\08-Examen02\app\build\intermediates\merged_res\debug
+com.example.rzexamen1.app-debug-5 C:\2023 Moviles\RaquelZumba\2023B-movgr1cca-zumba\08-Examen02\app\src\debug\res
+com.example.rzexamen1.app-main-6 C:\2023 Moviles\RaquelZumba\2023B-movgr1cca-zumba\08-Examen02\app\src\main\res
+com.example.rzexamen1.app-emoji2-1.3.0-7 C:\Users\user\.gradle\caches\transforms-3\060c147e16744b693740ab1354675fea\transformed\emoji2-1.3.0\res
+com.example.rzexamen1.app-savedstate-1.2.1-8 C:\Users\user\.gradle\caches\transforms-3\1542242fb8505572a751730a4d3fa0c3\transformed\savedstate-1.2.1\res
+com.example.rzexamen1.app-fragment-1.3.6-9 C:\Users\user\.gradle\caches\transforms-3\16432b3b957689ea48e606d3eaa35e0f\transformed\fragment-1.3.6\res
+com.example.rzexamen1.app-activity-1.8.0-10 C:\Users\user\.gradle\caches\transforms-3\185921c939f32f103c9a6eef9eaedc01\transformed\activity-1.8.0\res
+com.example.rzexamen1.app-runtime-1.4.0-11 C:\Users\user\.gradle\caches\transforms-3\26de052ef9f697bba9d590e3dd8695dc\transformed\runtime-1.4.0\res
+com.example.rzexamen1.app-customview-poolingcontainer-1.0.0-12 C:\Users\user\.gradle\caches\transforms-3\274d22c6ae649c0ea594eeec4e0d07b6\transformed\customview-poolingcontainer-1.0.0\res
+com.example.rzexamen1.app-ui-geometry-1.4.0-13 C:\Users\user\.gradle\caches\transforms-3\29809b3fb84d96633c368bacfd61a61b\transformed\ui-geometry-1.4.0\res
+com.example.rzexamen1.app-animation-1.4.0-14 C:\Users\user\.gradle\caches\transforms-3\2d8bc65d6f060b70f9b62035ef56b76d\transformed\animation-1.4.0\res
+com.example.rzexamen1.app-viewpager2-1.0.0-15 C:\Users\user\.gradle\caches\transforms-3\2dd13a9eb2d5dadeaecd1f0d20665691\transformed\viewpager2-1.0.0\res
+com.example.rzexamen1.app-foundation-layout-1.4.0-16 C:\Users\user\.gradle\caches\transforms-3\300e1d14051b340a0beead2bcfc360b6\transformed\foundation-layout-1.4.0\res
+com.example.rzexamen1.app-material-1.4.0-17 C:\Users\user\.gradle\caches\transforms-3\3450333e698eb3bdd9334ee7468d8683\transformed\material-1.4.0\res
+com.example.rzexamen1.app-browser-1.4.0-18 C:\Users\user\.gradle\caches\transforms-3\35aa04c5d6008af17774ff5e2d1caf86\transformed\browser-1.4.0\res
+com.example.rzexamen1.app-lifecycle-livedata-core-2.6.1-19 C:\Users\user\.gradle\caches\transforms-3\3b285cca542adc8054acce10f694d77b\transformed\lifecycle-livedata-core-2.6.1\res
+com.example.rzexamen1.app-ui-tooling-preview-1.4.0-20 C:\Users\user\.gradle\caches\transforms-3\43d19ef12374fd5d8c3780dd0c3a8e59\transformed\ui-tooling-preview-1.4.0\res
+com.example.rzexamen1.app-cardview-1.0.0-21 C:\Users\user\.gradle\caches\transforms-3\4a17c71ca8512d8855add3d1e7fe0f1b\transformed\cardview-1.0.0\res
+com.example.rzexamen1.app-play-services-base-18.0.1-22 C:\Users\user\.gradle\caches\transforms-3\4af36a3c24192827c68309224e88c606\transformed\play-services-base-18.0.1\res
+com.example.rzexamen1.app-material3-1.0.0-23 C:\Users\user\.gradle\caches\transforms-3\4b1d25c1c679c8c82d2f101f85a076bb\transformed\material3-1.0.0\res
+com.example.rzexamen1.app-ui-text-1.4.0-24 C:\Users\user\.gradle\caches\transforms-3\4cfd71c3629a22759632a29ca2c9228e\transformed\ui-text-1.4.0\res
+com.example.rzexamen1.app-lifecycle-viewmodel-2.6.1-25 C:\Users\user\.gradle\caches\transforms-3\4fd1a31b671063d6bdc958276425ac85\transformed\lifecycle-viewmodel-2.6.1\res
+com.example.rzexamen1.app-profileinstaller-1.3.0-26 C:\Users\user\.gradle\caches\transforms-3\553559ace79a15343b76e92211c30ee0\transformed\profileinstaller-1.3.0\res
+com.example.rzexamen1.app-appcompat-1.6.1-27 C:\Users\user\.gradle\caches\transforms-3\621002735e9b406ce6ca2ae9972c0b44\transformed\appcompat-1.6.1\res
+com.example.rzexamen1.app-activity-compose-1.8.0-28 C:\Users\user\.gradle\caches\transforms-3\6329f92659452666b25fee112c092999\transformed\activity-compose-1.8.0\res
+com.example.rzexamen1.app-play-services-basement-18.1.0-29 C:\Users\user\.gradle\caches\transforms-3\66681eec9891d098ef86f2508d1de47c\transformed\play-services-basement-18.1.0\res
+com.example.rzexamen1.app-lifecycle-runtime-2.6.1-30 C:\Users\user\.gradle\caches\transforms-3\66811dc2a8546ff47763e66968d6b832\transformed\lifecycle-runtime-2.6.1\res
+com.example.rzexamen1.app-activity-ktx-1.8.0-31 C:\Users\user\.gradle\caches\transforms-3\6b3db2706f6ec392979fa55fdc41c606\transformed\activity-ktx-1.8.0\res
+com.example.rzexamen1.app-animation-core-1.4.0-32 C:\Users\user\.gradle\caches\transforms-3\6e55f4ec5ddbdf89d9b6b570970e6bfd\transformed\animation-core-1.4.0\res
+com.example.rzexamen1.app-drawerlayout-1.1.1-33 C:\Users\user\.gradle\caches\transforms-3\7065df2c58f58f73abea5ea0a2b03501\transformed\drawerlayout-1.1.1\res
+com.example.rzexamen1.app-foundation-1.4.0-34 C:\Users\user\.gradle\caches\transforms-3\73454bb8c7a036ae8132a51a3e56eada\transformed\foundation-1.4.0\res
+com.example.rzexamen1.app-runtime-saveable-1.4.0-35 C:\Users\user\.gradle\caches\transforms-3\76ea426ee9af38ec02faafb62733f565\transformed\runtime-saveable-1.4.0\res
+com.example.rzexamen1.app-emoji2-views-helper-1.3.0-36 C:\Users\user\.gradle\caches\transforms-3\7c9feef5f49a107e1dcbf1d9cf94eb01\transformed\emoji2-views-helper-1.3.0\res
+com.example.rzexamen1.app-ui-graphics-1.4.0-37 C:\Users\user\.gradle\caches\transforms-3\83e87f33d82175612018caad5fb8f88b\transformed\ui-graphics-1.4.0\res
+com.example.rzexamen1.app-firebase-common-20.4.2-38 C:\Users\user\.gradle\caches\transforms-3\882f9e161a84f298c3c47b5aa5cf5902\transformed\firebase-common-20.4.2\res
+com.example.rzexamen1.app-material-1.11.0-39 C:\Users\user\.gradle\caches\transforms-3\8a27e9d13f353b32f5402bef58c590c5\transformed\material-1.11.0\res
+com.example.rzexamen1.app-lifecycle-process-2.6.1-40 C:\Users\user\.gradle\caches\transforms-3\8b21b304044c4a3f277e33a098e3174e\transformed\lifecycle-process-2.6.1\res
+com.example.rzexamen1.app-material-icons-core-1.4.0-41 C:\Users\user\.gradle\caches\transforms-3\8fffee5d377fe0e4bc24af2300d65f1d\transformed\material-icons-core-1.4.0\res
+com.example.rzexamen1.app-savedstate-ktx-1.2.1-42 C:\Users\user\.gradle\caches\transforms-3\939289db8bc18260060697a21cf88bef\transformed\savedstate-ktx-1.2.1\res
+com.example.rzexamen1.app-constraintlayout-2.1.4-43 C:\Users\user\.gradle\caches\transforms-3\94d5e271a850cdebc8a1032878ae4d1e\transformed\constraintlayout-2.1.4\res
+com.example.rzexamen1.app-appcompat-resources-1.6.1-44 C:\Users\user\.gradle\caches\transforms-3\97884f0dac03eafa0fa9399d06ce2833\transformed\appcompat-resources-1.6.1\res
+com.example.rzexamen1.app-lifecycle-runtime-ktx-2.6.1-45 C:\Users\user\.gradle\caches\transforms-3\9f368e89be809624a72deaf7e7ac536b\transformed\lifecycle-runtime-ktx-2.6.1\res
+com.example.rzexamen1.app-ui-tooling-1.4.0-46 C:\Users\user\.gradle\caches\transforms-3\a910d33f013d82a80d7075a0621bd433\transformed\ui-tooling-1.4.0\res
+com.example.rzexamen1.app-core-1.9.0-47 C:\Users\user\.gradle\caches\transforms-3\b2581920eaf0cf0c5d6e53a04c1927e9\transformed\core-1.9.0\res
+com.example.rzexamen1.app-ui-unit-1.4.0-48 C:\Users\user\.gradle\caches\transforms-3\ba17df97817b83ba7c80776604c0f6d9\transformed\ui-unit-1.4.0\res
+com.example.rzexamen1.app-coordinatorlayout-1.1.0-49 C:\Users\user\.gradle\caches\transforms-3\bb38969a4c765f837a3d122849c5a2d9\transformed\coordinatorlayout-1.1.0\res
+com.example.rzexamen1.app-ui-1.4.0-50 C:\Users\user\.gradle\caches\transforms-3\bc7fda27abc80ae05e6e1e8e81ab792d\transformed\ui-1.4.0\res
+com.example.rzexamen1.app-annotation-experimental-1.3.0-51 C:\Users\user\.gradle\caches\transforms-3\c6a8450e2477d140217d990fc0775c41\transformed\annotation-experimental-1.3.0\res
+com.example.rzexamen1.app-core-ktx-1.9.0-52 C:\Users\user\.gradle\caches\transforms-3\c72f6de11d4ff184d3609506c297000d\transformed\core-ktx-1.9.0\res
+com.example.rzexamen1.app-lifecycle-livedata-2.6.1-53 C:\Users\user\.gradle\caches\transforms-3\c757ea7f30ac27fd9e74d9afb1be1d9b\transformed\lifecycle-livedata-2.6.1\res
+com.example.rzexamen1.app-recyclerview-1.1.0-54 C:\Users\user\.gradle\caches\transforms-3\c973f5225c4061b134e53ef30ffcbb1a\transformed\recyclerview-1.1.0\res
+com.example.rzexamen1.app-material-ripple-1.4.0-55 C:\Users\user\.gradle\caches\transforms-3\c9b6410d726c79eb26b8217f63ccd8bb\transformed\material-ripple-1.4.0\res
+com.example.rzexamen1.app-ui-test-manifest-1.4.0-56 C:\Users\user\.gradle\caches\transforms-3\cc1d2a9f4b96c211073c29855dec5d6d\transformed\ui-test-manifest-1.4.0\res
+com.example.rzexamen1.app-core-runtime-2.2.0-57 C:\Users\user\.gradle\caches\transforms-3\cd7dbe8c63a607193a12abbe96a177d1\transformed\core-runtime-2.2.0\res
+com.example.rzexamen1.app-startup-runtime-1.1.1-58 C:\Users\user\.gradle\caches\transforms-3\ce5cfda1db61f2cc8f6b32cb72a6d872\transformed\startup-runtime-1.1.1\res
+com.example.rzexamen1.app-transition-1.2.0-59 C:\Users\user\.gradle\caches\transforms-3\dfb0c9a7c63c65f2a820f67b38bbf253\transformed\transition-1.2.0\res
+com.example.rzexamen1.app-lifecycle-viewmodel-savedstate-2.6.1-60 C:\Users\user\.gradle\caches\transforms-3\e76d46f3d16c36def7b1c893c66f189c\transformed\lifecycle-viewmodel-savedstate-2.6.1\res
+com.example.rzexamen1.app-ui-tooling-data-1.4.0-61 C:\Users\user\.gradle\caches\transforms-3\eb5d076c70cbd9dac7db72cd4165926a\transformed\ui-tooling-data-1.4.0\res
+com.example.rzexamen1.app-ui-util-1.4.0-62 C:\Users\user\.gradle\caches\transforms-3\f7c00fbfe2ec3152f78f908edab3a37e\transformed\ui-util-1.4.0\res
+com.example.rzexamen1.app-lifecycle-viewmodel-ktx-2.6.1-63 C:\Users\user\.gradle\caches\transforms-3\fb8cbae565918ea7fe74e1a52921ec16\transformed\lifecycle-viewmodel-ktx-2.6.1\res
