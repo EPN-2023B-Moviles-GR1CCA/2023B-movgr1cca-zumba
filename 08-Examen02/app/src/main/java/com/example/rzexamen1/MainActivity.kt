@@ -6,20 +6,20 @@ import android.database.sqlite.SQLiteDatabase
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
+import com.google.firebase.auth.FirebaseAuth
 
 
 class MainActivity : AppCompatActivity() {
+    private lateinit var auth: FirebaseAuth
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         //Con la letra R accedemos a los Recursos
     setContentView(R.layout.activity_main)
-        val dbHelper: BaseDatos = BaseDatos(this)
-        val db: SQLiteDatabase = dbHelper.writableDatabase
-        if (db != null) {
+        // Inicializar Firebase Authentication
+        auth = FirebaseAuth.getInstance()
 
-        } else {
-            Toast.makeText(this, "ERROR AL CREAR LA BD", Toast.LENGTH_LONG).show()
-        }
+        // Si deseas autenticar al usuario aquí, puedes hacerlo
+
         irActividad(BEstudiante::class.java)
 
     }

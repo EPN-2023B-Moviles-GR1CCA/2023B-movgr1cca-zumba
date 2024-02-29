@@ -1,81 +1,63 @@
 package com.example.rzexamen1
-
-import android.content.Intent
+import Materia
+import android.widget.EditText
+import android.widget.Button
+import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.Toast
 
 class ActualizarMateria : AppCompatActivity() {
-   override fun onCreate(savedInstanceState: Bundle?) {
+    override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_actualizar_materia)
 
         val idMateria = VerMateria.idMateriaSeleccionada
-        var materia = Materia(null, "","","","",0, this)
-        materia = materia.getMateriaById(idMateria)
-
-        var codigo  = findViewById<EditText>(R.id.dt_codigoUPdMateria)
-        codigo.setText(materia.getcodigoMateria().toString())
-
-        var nombre =  findViewById<EditText>(R.id.et_nombreUPDMateria)
-        nombre.setText(materia.getnombreMateria())
-
-        var creditos = findViewById<EditText>(R.id.et_creditosUDPMateria)
-        creditos.setText(materia.getcreditos())
-
-        var costo = findViewById<EditText>(R.id.et_tcostoUPDMATERIA)
-        costo.setText(materia.getcosto())
-
-        var esObli = findViewById<EditText>(R.id.et_EsobligatorioUPDMateria)
-        esObli.setText(materia.getesObligatorio())
-
-        var idEs = findViewById<EditText>(R.id.et_CodigoEstudianteUPD_Materia)
-        idEs.setText(materia.getcodigoEstudiante().toString())
+        val materia = Materia(null, "", "", "", "", 0)
+        materia.getMateriaById(idMateria) { materiaResult ->
+            if (materiaResult != null) {
+                findViewById<EditText>(R.id.dt_codigoUPdMateria).setText(materiaResult.getcodigoMateria().toString())
+                findViewById<EditText>(R.id.et_nombreUPDMateria).setText(materiaResult.getnombreMateria())
+                findViewById<EditText>(R.id.et_creditosUDPMateria).setText(materiaResult.getcreditos())
+                findViewById<EditText>(R.id.et_tcostoUPDMATERIA).setText(materiaResult.getcosto())
+                findViewById<EditText>(R.id.et_EsobligatorioUPDMateria).setText(materiaResult.getesObligatorio())
+                findViewById<EditText>(R.id.et_CodigoEstudianteUPD_Materia).setText(materiaResult.getcodigoEstudiante().toString())
+            } else {
+                Toast.makeText(this, "No se pudo obtener la materia", Toast.LENGTH_SHORT).show()
+            }
+        }
 
         val btnActualizarMateria = findViewById<Button>(R.id.btn_actualizarMateria)
         btnActualizarMateria.setOnClickListener {
+            val nombre = findViewById<EditText>(R.id.et_nombreUPDMateria).text.toString()
+            val creditos = findViewById<EditText>(R.id.et_creditosUDPMateria).text.toString()
+            val costo = findViewById<EditText>(R.id.et_tcostoUPDMATERIA).text.toString()
+            val esObligatorio = findViewById<EditText>(R.id.et_EsobligatorioUPDMateria).text.toString()
+            val codigoEstudiante = findViewById<EditText>(R.id.et_CodigoEstudianteUPD_Materia).text.toString().toInt()
 
-            materia.setnombreMateria(nombre.text.toString())
-            materia.setcreditos(creditos.text.toString())
-            materia.setcosto(costo.text.toString())
-            materia.setesObligatorio(esObli.text.toString())
-            materia.setcodigoEstudiante(idEs.text.toString().toInt())
+            materia.setnombreMateria(nombre)
+            materia.setcreditos(creditos)
+            materia.setcosto(costo)
+            materia.setesObligatorio(esObligatorio)
+            materia.setcodigoEstudiante(codigoEstudiante)
 
-            val resultado = materia.updateMateria()
-
-            if (resultado > 0) {
-                Toast.makeText(this, "REGISTRO ACTUALIZADO", Toast.LENGTH_LONG).show()
-                cleanEditText()
-            } else {
-                Toast.makeText(this, "ERROR AL ACTUALIZAR REGISTRO", Toast.LENGTH_LONG).show()
+            materia.updateMateria { isSuccess ->
+                if (isSuccess) {
+                    Toast.makeText(this, "REGISTRO ACTUALIZADO", Toast.LENGTH_LONG).show()
+                    cleanEditText()
+                } else {
+                    Toast.makeText(this, "ERROR AL ACTUALIZAR REGISTRO", Toast.LENGTH_LONG).show()
+                }
             }
+
+
         }
     }
 
-
-
-
-
-
-
-    //Limpiar las cajas de texto
-
-    fun cleanEditText(){
-        val nombre = findViewById<EditText>(R.id.ed_nombreMateria)
-        nombre.setText("")
-        val  creditos = findViewById<EditText>(R.id.ed_creditos)
-        creditos.setText("")
-
-        val costo = findViewById<EditText>(R.id.edt_costo)
-        costo.setText("")
-
-        val obligatorio = findViewById<EditText>(R.id.edt_esObligatorio)
-        obligatorio.setText("")
-
-        val codigoEs = findViewById<EditText>(R.id.ed_codigoEstudinateMateria)
-        codigoEs.setText("")
+    private fun cleanEditText() {
+        findViewById<EditText>(R.id.et_nombreUPDMateria).setText("")
+        findViewById<EditText>(R.id.et_creditosUDPMateria).setText("")
+        findViewById<EditText>(R.id.et_tcostoUPDMATERIA).setText("")
+        findViewById<EditText>(R.id.et_EsobligatorioUPDMateria).setText("")
+        findViewById<EditText>(R.id.et_CodigoEstudianteUPD_Materia).setText("")
     }
 }
-

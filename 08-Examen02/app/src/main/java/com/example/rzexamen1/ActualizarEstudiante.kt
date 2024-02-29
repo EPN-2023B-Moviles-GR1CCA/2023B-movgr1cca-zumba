@@ -3,10 +3,8 @@ package com.example.rzexamen1
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.ArrayAdapter
 import android.widget.Button
 import android.widget.EditText
-import android.widget.ListView
 import android.widget.Toast
 
 class ActualizarEstudiante : AppCompatActivity() {
@@ -15,71 +13,62 @@ class ActualizarEstudiante : AppCompatActivity() {
         setContentView(R.layout.activity_actualizar_estudiante)
 
         val idPadre = BEstudiante.idSeleccionado
-        var  estudiante = Estudiante(null,"","","","",this)
-        estudiante = estudiante.getEstudianteById(idPadre)
+        var estudiante = Estudiante(null, "", "", "", "", this)
+        estudiante.getEstudianteById(idPadre) { estudianteResult ->
+            if (estudianteResult != null) {
+                var codigo = findViewById<EditText>(R.id.tv_updCodifoEs)
+                codigo.setText(estudianteResult.getcodigoEstudiante()?.toString() ?: "")
 
+                var nombre = findViewById<EditText>(R.id.tv_updNombreEs)
+                nombre.setText(estudianteResult.getnombreEstudiante() ?: "")
 
-         var codigo = findViewById<EditText>(R.id.tv_updCodifoEs)
-        codigo.setText(estudiante.getcodigoEstudiante().toString())
+                var fechaNacimiento = findViewById<EditText>(R.id.tv_updFechaNEs)
+                fechaNacimiento.setText(estudianteResult.getfechaNacimiento() ?: "")
 
-        var nombre = findViewById<EditText>(R.id.tv_updNombreEs)
-        nombre.setText(estudiante.getnombreEstudiante())
+                var promedio = findViewById<EditText>(R.id.tv_updpromedioEs)
+                promedio.setText(estudianteResult.getpromedio())
 
-
-        var fechaNacimiento = findViewById<EditText>(R.id.tv_updFechaNEs)
-        fechaNacimiento.setText(estudiante.getfechaNacimiento())
-
-
-        var promedio = findViewById<EditText>(R.id.tv_updpromedioEs)
-        promedio.setText(estudiante.getpromedio())
-
-
-        var activo = findViewById<EditText>(R.id.tv_updactivoEs)
-        activo.setText(estudiante.getactivo())
-
-
-        // Dentro de la actividad ActualizarEstudiante
-        val btnActualizarEstudiante = findViewById<Button>(R.id.btn_updEstudiante)
-
-        btnActualizarEstudiante.setOnClickListener {
-            estudiante.setnombreEstudiante(nombre.text.toString())
-            estudiante.setfechaNacimiento(fechaNacimiento.text.toString())
-            estudiante.setpromedio(promedio.text.toString())
-            estudiante.setactivo(activo.text.toString())
-
-            val resultado = estudiante.updateEstudiante()
-
-            // Después de la actualización y obtener los nuevos datos
-            if (resultado > 0) {
-                Toast.makeText(this, "REGISTRO ACTUALIZADO", Toast.LENGTH_LONG).show()
-
-                // Limpiar los campos
-                cleanEditText()
-
-                // Llamar a la función showListViewEstudiante en BEstudiante para actualizar la lista
-                val intent = Intent(this, BEstudiante::class.java)
-                startActivity(intent)
+                var activo = findViewById<EditText>(R.id.tv_updactivoEs)
+                activo.setText(estudianteResult.getactivo())
             } else {
-                Toast.makeText(this, "ERROR AL ACTUALIZAR REGISTRO", Toast.LENGTH_LONG).show()
+                Toast.makeText(this, "No se pudo obtener el estudiante", Toast.LENGTH_SHORT).show()
             }
         }
 
+        val btnActualizarEstudiante = findViewById<Button>(R.id.btn_updEstudiante)
+        btnActualizarEstudiante.setOnClickListener {
+            val nombre = findViewById<EditText>(R.id.tv_updNombreEs).text.toString()
+            val fechaNacimiento = findViewById<EditText>(R.id.tv_updFechaNEs).text.toString()
+            val promedio = findViewById<EditText>(R.id.tv_updpromedioEs).text.toString()
+            val activo = findViewById<EditText>(R.id.tv_updactivoEs).text.toString()
+
+            estudiante.setnombreEstudiante(nombre)
+            estudiante.setfechaNacimiento(fechaNacimiento)
+            estudiante.setpromedio(promedio)
+            estudiante.setactivo(activo)
+
+            estudiante.updateEstudiante { isSuccess ->
+                if (isSuccess) {
+                    Toast.makeText(this, "Registro actualizado", Toast.LENGTH_SHORT).show()
+                    cleanEditText()
+                    val intent = Intent(this, BEstudiante::class.java)
+                    startActivity(intent)
+                } else {
+                    Toast.makeText(this, "Error al actualizar el registro", Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
     }
 
-
-    //Limpiar los campos
-   private fun cleanEditText(){
+    private fun cleanEditText() {
         val nombre = findViewById<EditText>(R.id.tv_updNombreEs)
         val fechaNacimiento = findViewById<EditText>(R.id.tv_updFechaNEs)
         val promedio = findViewById<EditText>(R.id.tv_updpromedioEs)
         val activo = findViewById<EditText>(R.id.tv_updactivoEs)
 
-        nombre.text.clear()
-        fechaNacimiento.text.clear()
-        promedio.text.clear()
-        activo.text.clear()
-
-        //Esto hace que el cursor se ponga en  la primer input
-        nombre.requestFocus()
+        nombre.setText("")
+        fechaNacimiento.setText("")
+        promedio.setText("")
+        activo.setText("")
     }
 }

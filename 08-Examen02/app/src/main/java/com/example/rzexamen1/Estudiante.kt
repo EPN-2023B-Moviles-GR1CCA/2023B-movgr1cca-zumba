@@ -1,10 +1,8 @@
 package com.example.rzexamen1
 
-import android.content.ContentValues
 import android.content.Context
-import android.database.Cursor
-import android.database.sqlite.SQLiteDatabase
 import android.util.Log
+import com.google.firebase.firestore.FirebaseFirestore
 
 class Estudiante(
     var codigoEstudiante: Int?,
@@ -14,163 +12,192 @@ class Estudiante(
     var activo: String,
     val context: Context?
 ) {
-
-   /* init{
-        codigoEstudiante
-        nombreEstudiante
-        fechaNacimiento
-        promedio
-        activo
-        context
-    }*/
-
-        // Métodos set
-
-       fun setcodigoEstudiante(codigoEstudiante: Int) {
-            this.codigoEstudiante = codigoEstudiante
-        }
-
-        fun setnombreEstudiante(nombreEstudiante: String?) {
-            this.nombreEstudiante = nombreEstudiante
-        }
-
-        fun setfechaNacimiento(fechaNacimiento: String?) {
-            this.fechaNacimiento = fechaNacimiento
-        }
-
-        fun setpromedio(promedio: String) {
-            this.promedio = promedio
-        }
-
-        fun setactivo(activo: String) {
-            this.activo = activo
-        }
-
-        // Métodos get
-
-        fun getcodigoEstudiante(): Int? {
-            return codigoEstudiante
-        }
-
-        fun getnombreEstudiante(): String? {
-            return nombreEstudiante
-        }
-
-        fun getfechaNacimiento(): String? {
-            return fechaNacimiento
-        }
-
-        fun getpromedio(): String {
-            return promedio
-        }
-
-        fun getactivo(): String {
-            return activo
-        }
-
-// Funcion  Insertar
-
-    fun insertEstudiante(): Long {
-        val dbHelper: BaseDatos = BaseDatos(this.context)
-        val db: SQLiteDatabase = dbHelper.writableDatabase
-        val values: ContentValues = ContentValues()
-
-        values.put("codigoEstudiante", this.codigoEstudiante)
-        values.put("nombreEstudiante", this.nombreEstudiante)
-        values.put("fechaNacimiento", this.fechaNacimiento)
-        values.put("promedio", this.promedio)
-        values.put("activo", this.activo)
-
-        return db.insert("t_estudiante", null, values)
+    companion object {
+        private const val TAG = "Estudiante"
+    }
+    fun setcodigoEstudiante(codigoEstudiante: Int) {
+        this.codigoEstudiante = codigoEstudiante
     }
 
- //Funcion Mostrar a los estudiantes
-
-    fun showEstudiantes(): ArrayList<Estudiante> {
-        val dbHelper: BaseDatos = BaseDatos(this.context)
-        val db: SQLiteDatabase = dbHelper.writableDatabase
-
-        var lista = ArrayList<Estudiante>()
-        var estudiante: Estudiante
-        var cursor: Cursor? = null
-
-        cursor = db.rawQuery("SELECT * FROM t_estudiante", null)
-
-        if (cursor.moveToFirst()) {
-            do {
-                estudiante = Estudiante(null, "", "", "", "", null)
-
-                estudiante.setcodigoEstudiante(cursor.getString(0).toInt())
-                estudiante.setnombreEstudiante(cursor.getString(1))
-                estudiante.setfechaNacimiento(cursor.getString(2))
-                estudiante.setpromedio(cursor.getString(3))
-                estudiante.setactivo(cursor.getString(4))
-                lista.add(estudiante)
-            } while (cursor.moveToNext())
-        }
-
-        cursor.close()
-        return lista
+    fun setnombreEstudiante(nombreEstudiante: String?) {
+        this.nombreEstudiante = nombreEstudiante
     }
 
-// Obtener  al estudiante con codigo
-fun getEstudianteById(id: Int): Estudiante {
-    val dbHelper = BaseDatos(this.context)
-    val db: SQLiteDatabase = dbHelper.writableDatabase
-
-    var estudiante = Estudiante(null, "", "", "", "",this.context)
-    var cursor: Cursor? = null
-
-    cursor = db.rawQuery("SELECT * FROM t_estudiante WHERE codigoEstudiante = ${id+1}", null)
-
-    if (cursor.moveToFirst()) {
-        do {
-            estudiante.setcodigoEstudiante(cursor.getString(0).toInt())
-            estudiante.setnombreEstudiante(cursor.getString(1))
-            estudiante.setfechaNacimiento(cursor.getString(2))
-            estudiante.setpromedio(cursor.getString(3))
-            estudiante.setactivo(cursor.getString(4))
-        } while (cursor.moveToNext())
+    fun setfechaNacimiento(fechaNacimiento: String?) {
+        this.fechaNacimiento = fechaNacimiento
     }
 
-    cursor.close()
-    return estudiante
-}
-
-
-
-    //Funcion Update
-    fun updateEstudiante(): Int {
-        val dbHelper: BaseDatos = BaseDatos(this.context)
-        val db: SQLiteDatabase = dbHelper.writableDatabase
-        val values: ContentValues = ContentValues()
-
-        values.put("nombreEstudiante", this.nombreEstudiante)
-        values.put("fechaNacimiento", this.fechaNacimiento)
-        values.put("promedio", this.promedio)
-        values.put("activo", this.activo)
-
-        return db.update("t_estudiante", values, "codigoEstudiante="+this.codigoEstudiante, null)
+    fun setpromedio(promedio: String) {
+        this.promedio = promedio
     }
 
-    //Funcion Delete verdadera
-    fun deleteEstudiante(id: Int): Int {
-        val dbHelper: BaseDatos = BaseDatos(this.context)
-        val db: SQLiteDatabase = dbHelper.writableDatabase
-
-        return db.delete("t_estudiante", "codigoEstudiante="+(id+1), null)
+    fun setactivo(activo: String) {
+        this.activo = activo
     }
 
-    //Sobreescribir la funcion
+    // Métodos get
 
-    override fun toString(): String {
-        val salida =
-            "Codigo: ${codigoEstudiante} \n" +
-                    "Nombre: ${nombreEstudiante} \n"+
-                    "Fecha Nacimiento: ${fechaNacimiento} \n"+
-                    "Promedio: ${promedio}\n"+
-                    "Activo: ${activo}"
-
-        return salida
+    fun getcodigoEstudiante(): Int? {
+        return codigoEstudiante
     }
+
+    fun getnombreEstudiante(): String? {
+        return nombreEstudiante
+    }
+
+    fun getfechaNacimiento(): String? {
+        return fechaNacimiento
+    }
+
+    fun getpromedio(): String {
+        return promedio
+    }
+
+    fun getactivo(): String {
+        return activo
+    }
+
+
+    // Función para insertar un estudiante en Firestore
+    fun insertEstudiante() {
+        val firestore = FirebaseFirestore.getInstance()
+        val estudiante = hashMapOf(
+            "codigoEstudiante" to codigoEstudiante,
+            "nombreEstudiante" to nombreEstudiante,
+            "fechaNacimiento" to fechaNacimiento,
+            "promedio" to promedio,
+            "activo" to activo
+        )
+
+        firestore.collection("estudiantes")
+            .add(estudiante)
+            .addOnSuccessListener { documentReference ->
+                Log.d(TAG, "Estudiante agregado con ID: ${documentReference.id}")
+            }
+            .addOnFailureListener { e ->
+                Log.w(TAG, "Error al agregar estudiante", e)
+            }
+    }
+
+    // Función para actualizar un estudiante en Firestore
+    fun updateEstudiante(callback: (Boolean) -> Unit) {
+        val firestore = FirebaseFirestore.getInstance()
+        firestore.collection("estudiantes")
+            .whereEqualTo("codigoEstudiante", codigoEstudiante)
+            .get()
+            .addOnSuccessListener { result ->
+                if (!result.isEmpty) {
+                    for (document in result) {
+                        val data = hashMapOf(
+                            "nombreEstudiante" to nombreEstudiante,
+                            "fechaNacimiento" to fechaNacimiento,
+                            "promedio" to promedio,
+                            "activo" to activo
+                        )
+
+                        firestore.collection("estudiantes")
+                            .document(document.id)
+                            .update(data as Map<String, Any>)
+                            .addOnSuccessListener {
+                                callback(true)
+                            }
+                            .addOnFailureListener { exception ->
+                                Log.w(TAG, "Error al actualizar estudiante", exception)
+                                callback(false)
+                            }
+                        return@addOnSuccessListener
+                    }
+                } else {
+                    callback(false)
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.w(TAG, "Error al actualizar estudiante", exception)
+                callback(false)
+            }
+    }
+
+    // Función para eliminar un estudiante en Firestore
+    fun deleteEstudiante(callback: (Boolean) -> Unit){
+        val firestore = FirebaseFirestore.getInstance()
+        firestore.collection("estudiantes")
+            .whereEqualTo("codigoEstudiante", codigoEstudiante)
+            .get()
+            .addOnSuccessListener { result ->
+                if (!result.isEmpty) {
+                    for (document in result) {
+                        firestore.collection("estudiantes")
+                            .document(document.id)
+                            .delete()
+                            .addOnSuccessListener {
+                                callback(true)
+                            }
+                            .addOnFailureListener { exception ->
+                                Log.w(TAG, "Error al eliminar estudiante", exception)
+                                callback(false)
+                            }
+                        return@addOnSuccessListener
+                    }
+                } else {
+                    callback(false)
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.w(TAG, "Error al eliminar estudiante", exception)
+                callback(false)
+            }
+    }
+
+    // Función para mostrar todos los estudiantes en Firestore
+    fun showEstudiantes(callback: (ArrayList<Estudiante>) -> Unit) {
+        val firestore = FirebaseFirestore.getInstance()
+        val listaEstudiantes = ArrayList<Estudiante>()
+
+        firestore.collection("estudiantes")
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    val estudiante = Estudiante(
+                        document["codigoEstudiante"] as Int?,
+                        document["nombreEstudiante"] as String?,
+                        document["fechaNacimiento"] as String?,
+                        document["promedio"] as String,
+                        document["activo"] as String,
+                        context
+                    )
+                    listaEstudiantes.add(estudiante)
+                }
+                callback(listaEstudiantes)
+            }
+            .addOnFailureListener { exception ->
+                Log.w(TAG, "Error al obtener estudiantes", exception)
+            }
+    }
+    fun getEstudianteById(id: Int, callback: (Estudiante?) -> Unit) {
+        val firestore = FirebaseFirestore.getInstance()
+        firestore.collection("estudiantes")
+            .whereEqualTo("codigoEstudiante", id)
+            .get()
+            .addOnSuccessListener { result ->
+                if (!result.isEmpty) {
+                    val document = result.documents[0] // Suponiendo que solo hay un estudiante con ese ID
+                    val estudiante = Estudiante(
+                        document["codigoEstudiante"] as Int?,
+                        document["nombreEstudiante"] as String?,
+                        document["fechaNacimiento"] as String?,
+                        document["promedio"] as String,
+                        document["activo"] as String,
+                        context
+                    )
+                    callback(estudiante)
+                } else {
+                    callback(null)
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.w(TAG, "Error al obtener estudiante por ID", exception)
+                callback(null)
+            }
+    }
+
 }

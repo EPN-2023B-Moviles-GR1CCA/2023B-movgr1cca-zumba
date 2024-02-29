@@ -1,38 +1,23 @@
-package com.example.rzexamen1
-
-
-import android.content.ContentValues
-import android.content.Context
-
-import android.database.Cursor
-import android.database.sqlite.SQLiteDatabase
 import android.util.Log
+import com.example.rzexamen1.BMateria
+import com.google.firebase.Firebase
+import com.google.firebase.firestore.firestore
 
 class Materia(
     var codigoMateria: Int?,
     var nombreMateria: String?,
     var creditos: String?,
     var costo: String?,
-    var esObligatorio: String?, var CodigoEstudiante: Int,
-    val context: Context?) {
+    var esObligatorio: String?,
+    var CodigoEstudiante: Int?
+) {
 
-
-    //init
-    /*init{
-        codigoMateria
-        nombreMateria
-        creditos
-        costo
-        esObligatorio
-        CodigoEstudiante
-        context
-    }*/
-
-    //Metodos set
-
-fun setcodigoMateria(codigoMateria: Int){
-    this.codigoMateria = codigoMateria
-}
+    companion object {
+        private const val TAG = "Materia"
+    }
+    fun setcodigoMateria(codigoMateria: Int){
+        this.codigoMateria = codigoMateria
+    }
 
     fun setnombreMateria(nombreMateria: String){
         this.nombreMateria = nombreMateria
@@ -55,16 +40,16 @@ fun setcodigoMateria(codigoMateria: Int){
         this.CodigoEstudiante = codigoEstudiante
     }
 
-  //Metodo get
+    //Metodo get
 
 
-  fun getcodigoMateria(): Int? {
-      return  codigoMateria
-  }
+    fun getcodigoMateria(): Int? {
+        return  codigoMateria
+    }
 
-     fun getcodigoEstudiante(): Int{
-         return CodigoEstudiante
-     }
+    fun getcodigoEstudiante(): Int? {
+        return CodigoEstudiante
+    }
 
 
     fun getnombreMateria(): String? {
@@ -84,124 +69,159 @@ fun setcodigoMateria(codigoMateria: Int){
         return esObligatorio
     }
 
+    // Función para insertar una materia en Firestore
+    fun insertMateria() {
+        val db = Firebase.firestore
+        val materia = hashMapOf(
+            "codigoMateria" to this.codigoMateria,
+            "nombreMateria" to this.nombreMateria,
+            "creditos" to this.creditos,
+            "costo" to this.costo,
+            "esObligatorio" to this.esObligatorio,
+            "CodigoEstudiante" to this.CodigoEstudiante
+        )
 
-   //Funcion Insertar
-    fun InsertarMateria(): Long{
-       val dbHelper: BaseDatos = BaseDatos(this.context)
-       val db: SQLiteDatabase = dbHelper.writableDatabase
-
-       val values: ContentValues = ContentValues()
-
-       values.put("nombreMateria", this.nombreMateria)
-       values.put("creditos", this.creditos)
-       values.put("costo", this.costo)
-       values.put("esObligatorio", this.esObligatorio)
-       values.put("CodigoEstudiante", this.CodigoEstudiante)
-
-
-       return db.insert("t_materia", null,values)
+        db.collection("materias")
+            .add(materia)
+            .addOnSuccessListener { documentReference ->
+                Log.d(TAG, "Materia agregada con ID: ${documentReference.id}")
+            }
+            .addOnFailureListener { e ->
+                Log.w(TAG, "Error al agregar materia", e)
+            }
     }
 
-    //Funcion verdadera
+    // Función para mostrar todas las materias desde Firestore
+    fun showMaterias(callback: (ArrayList<Materia>) -> Unit) {
+        val db = Firebase.firestore
+        val lista = ArrayList<Materia>()
 
-
-    fun mostrarMateria(id: Int): ArrayList<Materia> {
-        val dbHelper: BaseDatos = BaseDatos(this.context)
-        val db: SQLiteDatabase = dbHelper.writableDatabase
-
-        val listaMaterias = ArrayList<Materia>()
-        var materia: Materia
-        var cursorMateria: Cursor? = null
-
-        cursorMateria = db.rawQuery("SELECT * FROM t_materia WHERE codigoMateria = ${id+1}", null)
-
-        if (cursorMateria.moveToFirst()) {
-            do {
-                materia = Materia(null, "", "", "", "", 0, null)
-
-                materia.setcodigoMateria(cursorMateria.getString(0).toInt())
-             materia.setnombreMateria(cursorMateria.getString(1))
-                materia.setcreditos(cursorMateria.getString(2))
-                materia.setcosto(cursorMateria.getString(3))
-                materia.setesObligatorio(cursorMateria.getString(4))
-                materia.setcodigoEstudiante(cursorMateria.getString(5).toInt())
-                listaMaterias.add(materia)
-            } while (cursorMateria.moveToNext())
-        }
-
-        cursorMateria.close()
-        return listaMaterias
+        db.collection("materias")
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    val materia = Materia(
+                        document["codigoMateria"] as Int?,
+                        document["nombreMateria"] as String?,
+                        document["creditos"] as String?,
+                        document["costo"] as String?,
+                        document["esObligatorio"] as String?,
+                        document["CodigoEstudiante"] as? Int ?: 0
+                    )
+                    lista.add(materia)
+                }
+                callback(lista)
+            }
+            .addOnFailureListener { exception ->
+                Log.w(TAG, "Error al obtener materias", exception)
+            }
     }
 
-
-    //Verdadera
-
-    fun getMateriaById(id: Int): Materia {
-        val dbHelper: BaseDatos = BaseDatos(this.context)
-        val db: SQLiteDatabase = dbHelper.writableDatabase
-
-        var materia = Materia(null, "", "", "", "",0, this.context)
-        var cursor: Cursor? = null
-
-        cursor = db.rawQuery("SELECT * FROM t_materia WHERE codigoMateria = ${id+1}", null)
-
-        if (cursor.moveToFirst()) {
-            do {
-                materia.setcodigoMateria(cursor.getString(0).toInt())
-                materia.setnombreMateria(cursor.getString(1))
-                materia.setcreditos(cursor.getString(2))
-                materia.setcosto(cursor.getString(3))
-                materia.setesObligatorio(cursor.getString(4))
-                materia.setcodigoEstudiante(cursor.getString(5).toInt())
-
-            } while (cursor.moveToNext())
-        }
-
-        cursor.close()
-        return materia
+    // Función para obtener una materia por su ID desde Firestore
+    fun getMateriaById(id: String, callback: (Materia?) -> Unit) {
+        val db = Firebase.firestore
+        db.collection("materias")
+            .whereEqualTo("codigoMateria", id)
+            .get()
+            .addOnSuccessListener { result ->
+                if (!result.isEmpty) {
+                    for (document in result) {
+                        val materia = Materia(
+                            document["codigoMateria"] as Int?,
+                            document["nombreMateria"] as String?,
+                            document["creditos"] as String?,
+                            document["costo"] as String?,
+                            document["esObligatorio"] as String?,
+                            document["CodigoEstudiante"] as Int
+                        )
+                        callback(materia)
+                        return@addOnSuccessListener
+                    }
+                }
+                callback(null)
+            }
+            .addOnFailureListener { exception ->
+                Log.w(TAG, "Error al obtener materia", exception)
+                callback(null)
+            }
     }
 
-
-
-    //Funcion Eliminar
-
-    fun deleteMateria(id: Int): Int {
-        val dbHelper: BaseDatos = BaseDatos(this.context)
-        val db: SQLiteDatabase = dbHelper.writableDatabase
-//Original
-        //return db.delete("t_materia", "codigoMateria"+ (id+1), null)
-     //   return db.delete("t_materia", "codigoMateria=" + (id + 1), null)
-
-        return db.delete("t_materia", "codigoMateria=?", arrayOf((id + 1).toString()))
-
+    // Función para eliminar una materia en Firestore
+    fun deleteMateria(id: Int, callback: (Boolean) -> Unit) {
+        val db = Firebase.firestore
+        db.collection("materias")
+            .whereEqualTo("codigoMateria", id)
+            .get()
+            .addOnSuccessListener { result ->
+                if (!result.isEmpty) {
+                    for (document in result) {
+                        db.collection("materias")
+                            .document(document.id)
+                            .delete()
+                            .addOnSuccessListener {
+                                callback(true)
+                            }
+                            .addOnFailureListener { exception ->
+                                Log.w(TAG, "Error al eliminar materia", exception)
+                                callback(false)
+                            }
+                        return@addOnSuccessListener
+                    }
+                } else {
+                    callback(false)
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.w(TAG, "Error al eliminar materia", exception)
+                callback(false)
+            }
     }
 
-    //Funcion Update
-    fun updateMateria(): Int{
-        val dbHelper: BaseDatos = BaseDatos(this.context)
-        val db: SQLiteDatabase = dbHelper.writableDatabase
-        val values: ContentValues = ContentValues()
+    // Función para actualizar una materia en Firestore
+    fun updateMateria(callback: (Boolean) -> Unit) {
+        val db = Firebase.firestore
+        db.collection("materias")
+            .whereEqualTo("codigoMateria", codigoMateria)
+            .get()
+            .addOnSuccessListener { result ->
+                if (!result.isEmpty) {
+                    for (document in result) {
+                        val data = hashMapOf(
+                            "nombreMateria" to nombreMateria,
+                            "creditos" to creditos,
+                            "costo" to costo,
+                            "esObligatorio" to esObligatorio
+                        )
 
-        values.put("nombreMateria", this.nombreMateria)
-        values.put("creditos", this.creditos)
-        values.put("costo", this.costo)
-        values.put("esObligatorio", this.esObligatorio)
-        values.put("CodigoEstudiante", this.CodigoEstudiante)
-        return db.update("t_materia", values, "codigoMateria="+this.codigoMateria, null)
+                        db.collection("materias")
+                            .document(document.id)
+                            .update(data as Map<String, Any>)
+                            .addOnSuccessListener {
+                                callback(true)
+                            }
+                            .addOnFailureListener { exception ->
+                                Log.w(TAG, "Error al actualizar materia", exception)
+                                callback(false)
+                            }
+                        return@addOnSuccessListener
+                    }
+                } else {
+                    callback(false)
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.w(TAG, "Error al actualizar materia", exception)
+                callback(false)
+            }
     }
 
-
-//Metodo toString
-
+    // Método toString
     override fun toString(): String {
-        val salida=
-        "Codigo: ${codigoMateria}\n" +
-                "Nombre Materia: ${nombreMateria}\n" +
-                "Creditos: ${creditos}\n " +
-                "Costo: ${costo}\n" +
-                "Es obligatorio: ${esObligatorio} \n"+
-                "Codigo Estudiante: ${CodigoEstudiante}"
-
-        return salida
+        return "Codigo: $codigoMateria\n" +
+                "Nombre Materia: $nombreMateria\n" +
+                "Creditos: $creditos\n" +
+                "Costo: $costo\n" +
+                "Es obligatorio: $esObligatorio\n" +
+                "Codigo Estudiante: $CodigoEstudiante"
     }
 }

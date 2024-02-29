@@ -1,6 +1,6 @@
 package com.example.rzexamen1
 
-import android.content.Intent
+import Materia
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.ContextMenu
@@ -10,10 +10,10 @@ import android.widget.AdapterView
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
-import androidx.compose.material3.MaterialTheme
+import com.google.firebase.firestore.FirebaseFirestore
 
 class BMateria : AppCompatActivity() {
-    var idItemSeleccionado = 0
+    var idItemSeleccionado = ""
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,7 +21,7 @@ class BMateria : AppCompatActivity() {
 
         val nombre = findViewById<EditText>(R.id.ed_nombreMateria)
         nombre.requestFocus()
-        val  creditos = findViewById<EditText>(R.id.ed_creditos)
+        val creditos = findViewById<EditText>(R.id.ed_creditos)
         val costo = findViewById<EditText>(R.id.edt_costo)
         val obligatorio = findViewById<EditText>(R.id.edt_esObligatorio)
         val codigoEs = findViewById<EditText>(R.id.ed_codigoEstudinateMateria)
@@ -29,29 +29,32 @@ class BMateria : AppCompatActivity() {
         val btnInsertar = findViewById<Button>(R.id.btn_InsertarMateria)
         btnInsertar.setOnClickListener {
 
-            val materia:  Materia = Materia(
+            val materia = Materia(
                 null,
                 nombre.text.toString(),
                 creditos.text.toString(),
                 costo.text.toString(),
                 obligatorio.text.toString(),
-                codigoEs.text.toString().toInt(),
-                this
+                codigoEs.text.toString().toInt()
             )
-            val resultado = materia.InsertarMateria()
 
-
-            if (resultado > 0) {
-                Toast.makeText(this, "REGISTRO GUARDADO", Toast.LENGTH_LONG).show()
-                cleanEditText()
-            } else {
-                Toast.makeText(this, "ERROR AL INSERTAR REGISTRO", Toast.LENGTH_LONG).show()
-            }
-
-
+            insertarMateriaEnFirestore(materia)
         }
     }
 
+    private fun insertarMateriaEnFirestore(materia: Materia) {
+        val firestore = FirebaseFirestore.getInstance()
+
+        firestore.collection("materias")
+            .add(materia.toMap())
+            .addOnSuccessListener { documentReference ->
+                Toast.makeText(this, "Materia agregada con ID: ${documentReference.id}", Toast.LENGTH_SHORT).show()
+                cleanEditText()
+            }
+            .addOnFailureListener { e ->
+                Toast.makeText(this, "Error al agregar materia: $e", Toast.LENGTH_SHORT).show()
+            }
+    }
 
     override fun onCreateContextMenu(
         menu: ContextMenu?,
@@ -59,48 +62,44 @@ class BMateria : AppCompatActivity() {
         menuInfo: ContextMenu.ContextMenuInfo?
     ) {
         super.onCreateContextMenu(menu, v, menuInfo)
-
-        // Llenamos las opciones del menu
         val inflater = menuInflater
         inflater.inflate(R.menu.menu_materia, menu)
-        // Obtener el id del ArrayListSeleccionado
+
         val info = menuInfo as AdapterView.AdapterContextMenuInfo
-        val id = info.position
-        idItemSeleccionado= id
+        idItemSeleccionado = info.position.toString()
     }
 
     override fun onContextItemSelected(item: MenuItem): Boolean {
-        return  when (item.itemId){
+        return when (item.itemId) {
             R.id.mi_editarmateria -> {
-             "${idItemSeleccionado}"
+                "$idItemSeleccionado"
                 return true
             }
             R.id.mi_eliminarmaterias -> {
-                "${idItemSeleccionado}"
+                "$idItemSeleccionado"
                 return true
             }
             else -> super.onContextItemSelected(item)
         }
     }
 
-    //limpiar los campos
-    fun cleanEditText(){
-        val nombre = findViewById<EditText>(R.id.ed_nombreMateria)
-        nombre.setText("")
-        val  creditos = findViewById<EditText>(R.id.ed_creditos)
-        creditos.setText("")
-
-        val costo = findViewById<EditText>(R.id.edt_costo)
-        costo.setText("")
-
-        val obligatorio = findViewById<EditText>(R.id.edt_esObligatorio)
-        obligatorio.setText("")
-
-        val codigoEs = findViewById<EditText>(R.id.ed_codigoEstudinateMateria)
-        codigoEs.setText("")
+    // Limpiar los campos
+    private fun cleanEditText() {
+        findViewById<EditText>(R.id.ed_nombreMateria).setText("")
+        findViewById<EditText>(R.id.ed_creditos).setText("")
+        findViewById<EditText>(R.id.edt_costo).setText("")
+        findViewById<EditText>(R.id.edt_esObligatorio).setText("")
+        findViewById<EditText>(R.id.ed_codigoEstudinateMateria).setText("")
     }
 
-
-
-
+    // Convertir materia a un mapa para almacenar en Firestore
+    private fun Materia.toMap(): Map<String, Any?> {
+        return hashMapOf(
+            "nombreMateria" to nombreMateria,
+            "creditos" to creditos,
+            "costo" to costo,
+            "esObligatorio" to esObligatorio,
+            "CodigoEstudiante" to CodigoEstudiante
+        )
+    }
 }
