@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="gcm_defaultSenderId" translatable="false">310220804765</string>
-    <string name="google_api_key" translatable="false">AIzaSyDZ2adexP-iY9YH5PBwdIYzN1FY0rqTyI8</string>
-    <string name="google_app_id" translatable="false">1:310220804765:android:2437248aee91ae0f2cfa74</string>
-    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyDZ2adexP-iY9YH5PBwdIYzN1FY0rqTyI8</string>
-    <string name="google_storage_bucket" translatable="false">b2023-examen1rz.appspot.com</string>
-    <string name="project_id" translatable="false">b2023-examen1rz</string>
-</resources>
