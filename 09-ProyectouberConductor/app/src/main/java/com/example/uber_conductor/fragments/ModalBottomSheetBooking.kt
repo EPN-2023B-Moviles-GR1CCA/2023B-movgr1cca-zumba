@@ -1,4 +1,4 @@
-package com.optic.uberclonedriverkotlin.fragments
+package com.example.uber_conductor.fragments
 
 import android.content.DialogInterface
 import android.content.Intent
@@ -9,15 +9,15 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import android.widget.TextView
-import android.widget.Toast
+import com.example.uber_conductor.R
+import com.example.uber_conductor.MapActivity
+import com.example.uber_conductor.MapTripActivity
+import com.example.uber_conductor.models.Booking
+import com.example.uber_conductor.providers.AuthProvider
+import com.example.uber_conductor.providers.BookingProvider
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.optic.uberclonedriverkotlin.R
-import com.optic.uberclonedriverkotlin.activities.MapActivity
-import com.optic.uberclonedriverkotlin.activities.MapTripActivity
-import com.optic.uberclonedriverkotlin.models.Booking
-import com.optic.uberclonedriverkotlin.providers.AuthProvider
-import com.optic.uberclonedriverkotlin.providers.BookingProvider
 import com.optic.uberclonedriverkotlin.providers.GeoProvider
+
 
 class ModalBottomSheetBooking: BottomSheetDialogFragment() {
 

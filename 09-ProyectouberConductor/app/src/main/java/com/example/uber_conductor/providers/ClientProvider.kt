@@ -1,10 +1,11 @@
-package com.optic.uberclonedriverkotlin.providers
+package com.example.uber_conductor.providers
 
+import com.example.uber_conductor.models.Client
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
 import com.google.firebase.ktx.Firebase
-import com.optic.uberclonedriverkotlin.models.Client
+
 
 class ClientProvider {
 

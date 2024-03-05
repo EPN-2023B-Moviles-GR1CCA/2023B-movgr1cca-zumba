@@ -1,4 +1,4 @@
-package com.optic.uberclonedriverkotlin.models
+package com.example.uber_conductor.models
 
 class FCMResponse (
     val success: Int? = null,

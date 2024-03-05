@@ -1,4 +1,4 @@
-package com.optic.uberclonedriverkotlin.providers
+package com.example.uber_conductor.providers
 
 import com.google.android.gms.tasks.Task
 import com.google.firebase.auth.AuthResult

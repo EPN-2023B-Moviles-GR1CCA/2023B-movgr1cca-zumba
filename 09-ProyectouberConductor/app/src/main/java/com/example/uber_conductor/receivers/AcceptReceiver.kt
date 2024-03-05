@@ -1,12 +1,12 @@
-package com.optic.uberclonedriverkotlin.receivers
+package com.example.uber_conductor.receivers
 
 import android.content.BroadcastReceiver
 import android.content.Context
 import android.content.Intent
 import android.util.Log
-import com.optic.uberclonedriverkotlin.activities.MapActivity
-import com.optic.uberclonedriverkotlin.activities.MapTripActivity
-import com.optic.uberclonedriverkotlin.providers.BookingProvider
+import com.example.uber_conductor.MapTripActivity
+import com.example.uber_conductor.providers.BookingProvider
+
 
 class AcceptReceiver: BroadcastReceiver() {
 

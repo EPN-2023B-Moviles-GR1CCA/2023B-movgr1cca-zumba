@@ -1,26 +1,22 @@
-package com.optic.uberclonedriverkotlin.fragments
+package com.example.uber_conductor.fragments
 
-import android.content.DialogInterface
 import android.content.Intent
 import android.os.Bundle
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import android.widget.LinearLayout
 import android.widget.TextView
-import android.widget.Toast
+import com.example.uber_conductor.HistoriesActivity
+import com.example.uber_conductor.MainActivity
+import com.example.uber_conductor.ProfileActivity
+import com.example.uber_conductor.R
+import com.example.uber_conductor.models.Driver
+import com.example.uber_conductor.providers.AuthProvider
+import com.example.uber_conductor.providers.DriverProvider
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
-import com.google.firebase.firestore.ktx.toObject
-import com.optic.uberclonedriverkotlin.R
-import com.optic.uberclonedriverkotlin.activities.*
-import com.optic.uberclonedriverkotlin.models.Booking
-import com.optic.uberclonedriverkotlin.models.Driver
-import com.optic.uberclonedriverkotlin.providers.AuthProvider
-import com.optic.uberclonedriverkotlin.providers.BookingProvider
-import com.optic.uberclonedriverkotlin.providers.DriverProvider
-import com.optic.uberclonedriverkotlin.providers.GeoProvider
+
+
 
 class ModalBottomSheetMenu: BottomSheetDialogFragment() {
 

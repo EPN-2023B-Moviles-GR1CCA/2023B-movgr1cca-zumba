@@ -10,7 +10,8 @@ import android.os.Build
 import androidx.annotation.RequiresApi
 import androidx.core.app.NotificationCompat
 import androidx.core.content.getSystemService
-import com.optic.uberclonedriverkotlin.R
+import com.example.uber_conductor.R
+
 
 class NotificationHelper(base: Context): ContextWrapper(base) {
 

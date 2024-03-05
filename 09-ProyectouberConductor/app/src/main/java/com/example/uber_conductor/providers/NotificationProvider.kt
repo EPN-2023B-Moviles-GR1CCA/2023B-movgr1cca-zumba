@@ -1,9 +1,10 @@
-package com.optic.uberclonedriverkotlin.providers
+package com.example.uber_conductor.providers
 
-import com.optic.uberclonedriverkotlin.api.IFCMApi
-import com.optic.uberclonedriverkotlin.api.RetrofitClient
-import com.optic.uberclonedriverkotlin.models.FCMBody
-import com.optic.uberclonedriverkotlin.models.FCMResponse
+import com.example.uber_conductor.api.IFCMApi
+import com.example.uber_conductor.api.RetrofitClient
+import com.example.uber_conductor.models.FCMBody
+import com.example.uber_conductor.models.FCMResponse
+
 import retrofit2.Call
 
 class NotificationProvider {

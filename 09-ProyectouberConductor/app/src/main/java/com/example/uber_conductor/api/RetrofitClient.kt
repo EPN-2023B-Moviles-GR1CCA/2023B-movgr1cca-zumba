@@ -1,4 +1,4 @@
-package com.optic.uberclonedriverkotlin.api
+package com.example.uber_conductor.api
 
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory

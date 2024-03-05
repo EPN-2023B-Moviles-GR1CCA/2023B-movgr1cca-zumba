@@ -1,15 +1,17 @@
-package com.optic.uberclonedriverkotlin.services
+package com.example.uber_conductor.services
 
 import android.app.PendingIntent
 import android.content.Intent
 import android.util.Log
 import androidx.core.app.NotificationCompat
+import com.example.uber_conductor.R
+import com.example.uber_conductor.receivers.AcceptReceiver
+import com.example.uber_conductor.receivers.CancelReceiver
 import com.google.firebase.messaging.FirebaseMessagingService
 import com.google.firebase.messaging.RemoteMessage
-import com.optic.uberclonedriverkotlin.R
+
 import com.optic.uberclonedriverkotlin.channel.NotificationHelper
-import com.optic.uberclonedriverkotlin.receivers.AcceptReceiver
-import com.optic.uberclonedriverkotlin.receivers.CancelReceiver
+
 
 class MyFirebaseMessagingClient: FirebaseMessagingService() {
 

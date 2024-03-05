@@ -1,4 +1,4 @@
-package com.optic.uberclonedriverkotlin.fragments
+package com.example.uber_conductor.fragments
 
 import android.Manifest
 import android.content.DialogInterface
@@ -13,14 +13,15 @@ import android.view.ViewGroup
 import android.widget.*
 import androidx.core.app.ActivityCompat
 import com.bumptech.glide.Glide
+import com.example.uber_conductor.R
+import com.example.uber_conductor.models.Booking
+import com.example.uber_conductor.models.Client
+import com.example.uber_conductor.providers.AuthProvider
+import com.example.uber_conductor.providers.ClientProvider
 import com.google.android.material.bottomsheet.BottomSheetDialogFragment
 import com.google.firebase.firestore.ktx.toObject
-import com.optic.uberclonedriverkotlin.R
-import com.optic.uberclonedriverkotlin.activities.*
-import com.optic.uberclonedriverkotlin.models.Booking
-import com.optic.uberclonedriverkotlin.models.Client
-import com.optic.uberclonedriverkotlin.models.Driver
-import com.optic.uberclonedriverkotlin.providers.*
+
+
 import de.hdodenhof.circleimageview.CircleImageView
 
 class ModalBottomSheetTripInfo: BottomSheetDialogFragment() {

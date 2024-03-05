@@ -1,4 +1,4 @@
-package com.optic.uberclonedriverkotlin.models
+package com.example.uber_conductor.models
 
 import com.beust.klaxon.*
 

@@ -1,7 +1,8 @@
-package com.optic.uberclonedriverkotlin.api
+package com.example.uber_conductor.api
 
-import com.optic.uberclonedriverkotlin.models.FCMBody
-import com.optic.uberclonedriverkotlin.models.FCMResponse
+
+import com.example.uber_conductor.models.FCMBody
+import com.example.uber_conductor.models.FCMResponse
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.Headers

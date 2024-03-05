@@ -1,4 +1,4 @@
-package com.optic.uberclonedriverkotlin.adapters
+package com.example.uber_conductor.adapters
 
 import android.app.Activity
 import android.content.Intent
@@ -7,10 +7,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
-import com.optic.uberclonedriverkotlin.R
-import com.optic.uberclonedriverkotlin.activities.HistoriesDetailActivity
-import com.optic.uberclonedriverkotlin.models.History
-import com.optic.uberclonedriverkotlin.utils.RelativeTime
+import com.example.uber_conductor.HistoriesDetailActivity
+import com.example.uber_conductor.R
+import com.example.uber_conductor.models.History
+import com.example.uber_conductor.utils.RelativeTime
+
 
 class HistoriesAdapter(val context: Activity, val histories: ArrayList<History>): RecyclerView.Adapter<HistoriesAdapter.HistoriesAdapterViewHolder>() {
 

@@ -1,4 +1,4 @@
-package com.optic.uberclonedriverkotlin.utils
+package com.example.uber_conductor.utils
 
 import android.app.Application
 import android.content.Context

@@ -1,7 +1,8 @@
-package com.optic.uberclonedriverkotlin.providers
+package com.example.uber_conductor.providers
 
 import android.net.Uri
 import android.util.Log
+import com.example.uber_conductor.models.Driver
 import com.google.android.gms.tasks.Task
 import com.google.firebase.firestore.DocumentSnapshot
 import com.google.firebase.firestore.ktx.firestore
@@ -10,7 +11,7 @@ import com.google.firebase.messaging.FirebaseMessaging
 import com.google.firebase.storage.FirebaseStorage
 import com.google.firebase.storage.StorageTask
 import com.google.firebase.storage.UploadTask
-import com.optic.uberclonedriverkotlin.models.Driver
+
 import java.io.File
 
 class DriverProvider {
